@@ -99,3 +99,5 @@ As of now, the project has been deployed to Netlify. You can find it here: https
 
     again, it got deployed, just like that. Pretty awesome, right?!Hope that helps someone out there 😊
 
+# Release Notes
+[Release Notes](docs/RELEASE_NOTES.md)
