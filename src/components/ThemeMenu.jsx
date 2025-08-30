@@ -11,7 +11,7 @@ const ThemeIcon = (props) => (
     </svg>
 );
 
-export function ThemeMenu({themes = ['system', 'light', 'dark', 'ocean', 'forest', 'grape']}) {
+export function ThemeMenu({themes = ['same as system', 'light', 'dark', 'ocean', 'forest', 'grape']}) {
     const [theme, setTheme] = useState('system');
 
     // Use LocalStorage to persist the theme choice when page reloades...
