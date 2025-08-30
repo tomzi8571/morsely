@@ -29,6 +29,7 @@ The UI was not good, but I was learning 😉 and it was mostly about the functio
 I hope I figured it out, today, as you read this right now 😉
 
 ## Getting Started
+As of now, the project has been deployed to Netlify. You can find it here: https://morsely.netlify.app/
 
 ## Deployment to Netlify
 
