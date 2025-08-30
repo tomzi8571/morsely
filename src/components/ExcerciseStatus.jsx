@@ -1,14 +1,34 @@
 import {ExamplesPropType} from "./Examples.jsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 export function ExerciseStatus(examples) {
     const [status, setStatus] = useState({session: 0, progression: 0, exercise: 0});
-
     // Normalize to an array for indexing logic
     const sessions = Array.isArray(examples) ? examples : Object.values(examples || {});
-    const progressions = sessions[status.session]?.progressions || [];
-    const currentProgression = progressions[status.progression] || {words: []};
+    const progressions =  sessions[status?.session]?.progressions || [];
+    const currentProgression = progressions[status?.progression] || {words: []};
     const currentWords = currentProgression.words || [];
+
+    // Load the status from local storage only the first time when the component is mounted
+    useEffect(() => {
+        let initialStatus = null
+        try {
+            initialStatus = JSON.parse(localStorage.getItem('exerciseStatus'))
+            // console.log("Loading status from local storage", initialStatus);
+        } catch (e) {
+            console.error("Error parsing local storage", e);
+        }
+        if (initialStatus === null) {
+            initialStatus = {session: 0, progression: 0, exercise: 0};
+        }
+        setStatus(initialStatus);
+    }, []);
+
+    // Update the local storage whenever the status changes
+    useEffect(() => {
+        // console.log("Saving status to local storage", status);
+        localStorage.setItem('exerciseStatus', JSON.stringify(status));
+    }, [status]);
 
     const previousSession = () => {
         setStatus(decrementSession());
