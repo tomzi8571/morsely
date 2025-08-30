@@ -1,0 +1,279 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    overscroll-behavior: none;
+    overflow: hidden; /*Get rid of scrollbars*/
+}
+
+html, body {
+    /*height: 100%;*/
+    height:fit-content;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overscroll-behavior: none; /* Get rid of scrollbars*/
+}
+
+:root {
+    --base: 0.8rem;
+    --h1: 1.3rem;
+    --h2: 1 rem;
+    --letter: 1.8rem;
+    --letter-reveal: 1.6rem;
+}
+
+@media (min-width: 600px) {
+    :root {
+        --base: 1.1rem;
+        --h1: 1.7rem;
+        --h2: 1.2rem;
+        --letter: 2rem;
+        --letter-reveal: 1.8rem;
+    }
+}
+
+#root {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    font-family: Helvetica, sans-serif;
+    height:fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: var(--base);
+}
+
+
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    /*height: 100svh;*/
+}
+
+.header, .footer{
+    flex-shrink: 0;
+}
+
+.main-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    /*height: 100%;*/
+    align-content: center;
+    vertical-align: middle;
+    align-items: center;
+}
+
+.header {
+    display: flex;
+    /*position: absolute;*/
+    /*z-index: 1000;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    width: 100%;
+    /*height: auto;*/
+    background: inherit;
+    flex-direction: column;
+    font-size: inherit;
+    padding-right: 1rem;
+    line-height: 1.1;
+}
+
+.menu {
+    width: 200px;
+    text-align: left;
+    position: absolute;
+    z-index: 1001;
+}
+
+.menu-header {
+    z-index: 1001;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+}
+
+.menu > summary::-webkit-details-marker {
+    display: none;
+}
+
+
+.menu-panel {
+    z-index: 1001;
+    display: flex;
+    font-size: var(--base);
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    background: hsla(0, 0%, 13%, 0.87);
+    border-radius: 0.5rem;
+    border: 1px solid hsla(0, 0%, 26%, 0.31);
+    width:20rem;
+}
+
+.menu-panel button {
+    background: transparent;
+    width: 100%;
+    text-align: left;
+    margin:0;
+    padding:0.3rem;
+}
+
+.menu-panel button:hover {
+    background: hsla(0, 0%, 26%, 0.31);
+    border-color: hsla(0, 0%, 26%, 0.31);
+}
+
+.menu .menu-panel {
+    display: none;
+}
+
+/* Open while hovering the header/container */
+.menu:hover .menu-panel {
+    display: block; /* or flex, etc. */
+}
+
+/* Keep open while any child (e.g., links) has focus (keyboard users) */
+.menu:focus-within .menu-panel {
+    display: block;
+}
+
+
+.title {
+    text-align: left;
+    width: 100%;
+    padding: 0.5rem 0; /* optional breathing room */
+    font-size: var(--base)
+}
+
+.title h1 {
+    margin: 0em;
+    font-size: var(--h1);
+    font-weight: 600;
+}
+
+.title h2 {
+    margin: 0;
+    font-size: var(--h2)
+}
+
+.letter {
+    display: inline-flex;
+    font-family: 'Courier New', Courier, monospace;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--letter);
+    padding-right: 1rem;
+    line-height: 1.1;
+}
+
+/* First line: Morse code */
+.letter .morse {
+    display: block;
+    /*letter-spacing: -0.2em;*/
+}
+
+/* Second line: revealed letter */
+.letter .reveal {
+    display: block;
+    height: 1em;
+    font-size: var(--letter-reveal);
+    margin-top: 0.15em; /* tiny gap between lines */
+}
+
+.progression {
+    display: flex;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+    padding: 0rem 0; /* optional breathing room */
+    text-align: left;
+    width: 100%;
+}
+
+.progression h2 {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: var(--h2);
+    font-weight: 300;
+}
+
+/* Optional: spacing between words */
+.word-seperator {
+    display: inline-block;
+    width: 1.5rem; /* space width between words */
+    height: 0; /* no visible mark, just spacing */
+}
+
+.footer {
+    /*position: absolute;*/
+    /*bottom: 0;*/
+    width: 100%;
+}
+
+.sentence {
+    align-items: center;
+    width: 100%;
+}
+
+.perfect {
+    color: green;
+    font-size: var(--h1);
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    gap: 0.1em;
+    margin-top: 4rem;
+}
+
+input.text-container, .text-container:focus {
+    width: 30px; /* hide the input */
+    display: block;
+    margin-top: 2rem;
+    border: none;
+    height: 1em;
+    /*max-width: 600px;*/
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: var(--base);
+    /*color: rgb(255, 255, 255);*/
+    color: rgba(67, 67, 67, 0.31);
+    background-color: transparent;
+    cursor: default;
+    outline: none;
+    caret-color: transparent;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    position: absolute;
+    z-index: 500;
+}
+
+.game-stats {
+    display: flex;
+    justify-content: center;
+    gap: 0.1em;
+    align-items: center;
+    font-size: var(--base);
+    margin-left: 1rem;
+}
+
+.float-bottom-right {
+    /*position: absolute;*/
+    /*bottom: 16px; !* distance from bottom *!*/
+    /*right: 16px; !* distance from right *!*/
+    /*text-align: right !important;*/
+    /*z-index: 1000; !* ensure it stays on top *!*/
+}

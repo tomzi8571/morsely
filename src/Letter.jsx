@@ -1,0 +1,33 @@
+import {useEffect, useState} from "react";
+
+export function Letter({letter, alphabet, highlightKey, highlight, reveal = false}) {
+    const [match, setMatch] = useState();
+    const [genHighlightKey, setGenHighlightKey] = useState();
+
+    useEffect(() => {
+        if (!letter) return null;
+        const {letters} = alphabet;
+        const matcher = letters.find(
+            ({text}) => text.toUpperCase() === String(letter).toUpperCase()
+        );
+        setMatch(() => matcher);
+        let genKey = String(highlightKey).replace(/ /g, '-').toLowerCase();
+        setGenHighlightKey(() => genKey)
+        // console.log(genKey)
+    })
+
+    const currentHighlightKey = String(highlight).replace(/ /g, '-').toLowerCase();
+    const highlightLetter = String(currentHighlightKey).startsWith(String(genHighlightKey));
+    // console.log({progression: letter, highlight, genHighlightKey, currentHighlightKey, highlightLetter});
+
+    return (
+        <span>
+            {String(letter).trim() === '' ? <span className="word-seperator"/> : ''}
+            <span className='letter' style={{color: highlightLetter ? 'lightgreen' : 'white'}}>
+                    <span className='morse'>{match ? match.morse : ''}</span>
+                    <span className='reveal'>{reveal || highlightLetter ? letter : ''}</span>
+            </span>
+        </span>
+    );
+}
+
