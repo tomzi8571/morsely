@@ -15,7 +15,7 @@ export function Sentence({text, highlight, reveal = false, wordSuccessFullyGuess
                 ...base,
                 color: 'seagreen',
                 textShadow: '0 0 6px rgba(46, 204, 113, 0.8), 0 0 14px rgba(46, 204, 113, 0.6)',
-                transform: 'scale(1.3)',
+                transform: 'scale(1.1)',
                 fontWeight: '800'
             };
         }
@@ -23,11 +23,15 @@ export function Sentence({text, highlight, reveal = false, wordSuccessFullyGuess
     }
 
     return (
-        <div className='sentence' style={guessedStyle()}>
-            {Array.from(text).map((letter, idx) => {
-                highlightKey = highlightKey + letter;
-                return (<Letter letter={letter} alphabet={Alphabet()} highlight={highlight} highlightKey={highlightKey} reveal={reveal}/>)
-            })}
+        <div className='sentence'>
+            <div style={guessedStyle()}>
+                {Array.from(text).map((letter, idx) => {
+                    highlightKey = highlightKey + letter;
+                    return (
+                        <Letter letter={letter} alphabet={Alphabet()} highlight={highlight} highlightKey={highlightKey}
+                                reveal={reveal}/>)
+                })}
+            </div>
         </div>
     );
 }

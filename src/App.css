@@ -1,73 +1,172 @@
-* {
+/* theme.css — modern, approachable, themeable CSS */
+
+/* 1) Base reset and sensible defaults */
+*,
+*::before,
+*::after {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    overscroll-behavior: none;
-    overflow: hidden; /*Get rid of scrollbars*/
 }
 
 html, body {
-    /*height: 100%;*/
-    height:fit-content;
+    height: auto;
     width: 100%;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    overscroll-behavior: none; /* Get rid of scrollbars*/
 }
 
+html {
+    color-scheme: light dark; /* allow UA to adjust form controls, etc. */
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Avoid disabling scroll globally; only hide overflow where needed */
+body {
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    line-height: 1.5;
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* 2) Design tokens */
 :root {
-    --base: 0.8rem;
-    --h1: 1.3rem;
-    --h2: 1 rem;
-    --letter: 1.8rem;
-    --letter-reveal: 1.6rem;
+    /* Layout scale */
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-5: 1.25rem;
+    --space-6: 1.5rem;
+    --space-7: 2rem;
+    --space-8: 3rem;
+
+    /* Typography scale */
+    --fs-xs: 0.8rem;
+    --fs-sm: 0.92rem;
+    --fs-base: 1rem;
+    --fs-lg: 1.125rem;
+    --fs-xl: 1.375rem;
+    --fs-2xl: 1.75rem;
+    --fs-3xl: 2.125rem;
+
+    /* Radius & shadow */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.10);
+
+    /* Letter sizes */
+    --letter: 2rem;
+    --letter-reveal: 1.2rem;
+
+    /* Theme tokens (light default) */
+    --bg: #ffffff;
+    --bg-elev: #f7f7f9;
+    --panel: #ffffff;
+    --text: #14151a;
+    --muted: #656b7a;
+    --border: #e6e7eb;
+    --accent: #0ea5e9; /* sky-500 */
+    --accent-contrast: #ffffff;
+    --focus: 0 0 0 3px color-mix(in oklab, var(--accent) 30%, #ffffff);
+    --morse: #0f172a; /* deep slate for good contrast on light bg */
 }
 
-@media (min-width: 600px) {
+/* Dark mode (auto) */
+@media (prefers-color-scheme: dark) {
     :root {
-        --base: 1.1rem;
-        --h1: 1.7rem;
-        --h2: 1.2rem;
-        --letter: 2rem;
-        --letter-reveal: 1.8rem;
+        --bg: #0b0d10;
+        --bg-elev: #12151a;
+        --panel: #161a21;
+        --text: #e5e7eb;
+        --muted: #9aa3b2;
+        --border: #232a35;
+        --accent: #38bdf8; /* sky-400 */
+        --accent-contrast: #0b0d10;
+        --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+        --shadow-md: 0 6px 24px rgba(0, 0, 0, 0.45);
+        --morse: #e5e7eb;
     }
 }
 
-#root {
-    width: 100%;
-    margin: 0 auto;
-    padding: 0;
-    text-align: center;
-    font-family: Helvetica, sans-serif;
-    height:fit-content;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    font-size: var(--base);
+/* Explicit themes via data-theme; these override auto */
+[data-theme="light"] {
+    --bg: #ffffff;
+    --bg-elev: #f7f7f9;
+    --panel: #ffffff;
+    --text: #14151a;
+    --muted: #656b7a;
+    --border: #e6e7eb;
+    --accent: #0ea5e9;
+    --accent-contrast: #ffffff;
+    --morse: #0f172a;
 }
 
+[data-theme="dark"] {
+    --bg: #0b0d10;
+    --bg-elev: #12151a;
+    --panel: #161a21;
+    --text: #e5e7eb;
+    --muted: #9aa3b2;
+    --border: #232a35;
+    --accent: #38bdf8;
+    --accent-contrast: #0b0d10;
+    --morse: #e5e7eb;
+}
 
+[data-theme="ocean"] {
+    --bg: #07141a;
+    --bg-elev: #0c1c26;
+    --panel: #0f2430;
+    --text: #e6f2f8;
+    --muted: #96a9b5;
+    --border: #163043;
+    --accent: #2dd4bf; /* teal-400 */
+    --accent-contrast: #07141a;
+    --morse: var(--text);
+}
 
+[data-theme="forest"] {
+    --bg: #0e1511;
+    --bg-elev: #121c17;
+    --panel: #15231c;
+    --text: #e6f5ec;
+    --muted: #95a69c;
+    --border: #1c2f26;
+    --accent: #22c55e; /* green-500 */
+    --accent-contrast: #0e1511;
+    --morse: var(--text);
+}
+
+[data-theme="grape"] {
+    --bg: #0f0b14;
+    --bg-elev: #15101c;
+    --panel: #1a1524;
+    --text: #f0eaff;
+    --muted: #ae9fd3;
+    --border: #251c36;
+    --accent: #a78bfa; /* violet-400 */
+    --accent-contrast: #0f0b14;
+    --morse: var(--text);
+}
+
+/* 3) App layout */
+#root,
 .app-container {
     display: flex;
     flex-direction: column;
-    /*height: 100svh;*/
+    min-height: 100dvh;
+    background: var(--bg);
+    color: var(--text);
+    font-size: var(--fs-base);
 }
 
-.header, .footer{
+.header,
+.footer {
     flex-shrink: 0;
-}
-
-.main-container {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: row;
-    /*height: 100%;*/
-    align-content: center;
-    vertical-align: middle;
-    align-items: center;
 }
 
 .header {
@@ -83,197 +182,398 @@ html, body {
     font-size: inherit;
     padding-right: 1rem;
     line-height: 1.1;
+    position: relative; /* enable absolute children like theme switcher */
 }
 
+/* Row that holds both dropdown triggers side-by-side and aligns with the title */
+.header-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3, 0.75rem);
+    padding: var(--space-4, 1rem) var(--space-5, 1.25rem) 0;
+}
+
+/* Ensure each dropdown trigger is inline and anchors its own panel */
 .menu {
-    width: 200px;
+    position: relative;
+    display: inline-block;
+    width: auto;
     text-align: left;
-    position: absolute;
-    z-index: 1001;
-}
-
-.menu-header {
-    z-index: 1001;
-    cursor: pointer;
-    list-style: none;
-    user-select: none;
+    z-index: 20;
 }
 
 .menu > summary::-webkit-details-marker {
     display: none;
 }
 
-
+/* Simpler, clean dropdown panel */
 .menu-panel {
-    z-index: 1001;
-    display: flex;
-    font-size: var(--base);
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-    padding-top: 0.5rem;
-    background: hsla(0, 0%, 13%, 0.87);
-    border-radius: 0.5rem;
-    border: 1px solid hsla(0, 0%, 26%, 0.31);
-    width:20rem;
+    display: none; /* shown when details is open */
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+
+    min-width: 14rem;
+    max-width: 90vw;
+
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+    padding: 0.35rem;
+
+    /* compact vertical stack */
+    gap: 0;
 }
 
-.menu-panel button {
-    background: transparent;
-    width: 100%;
-    text-align: left;
-    margin:0;
-    padding:0.3rem;
-}
-
-.menu-panel button:hover {
-    background: hsla(0, 0%, 26%, 0.31);
-    border-color: hsla(0, 0%, 26%, 0.31);
-}
-
-.menu .menu-panel {
-    display: none;
-}
-
-/* Open while hovering the header/container */
-.menu:hover .menu-panel {
-    display: block; /* or flex, etc. */
-}
-
-/* Keep open while any child (e.g., links) has focus (keyboard users) */
+/* Show when native <details> is open or focused for keyboard users */
+.menu[open] .menu-panel,
 .menu:focus-within .menu-panel {
-    display: block;
+    display: flex;
+    flex-direction: column;
 }
 
-
-.title {
-    text-align: left;
+/* Menu items */
+.menu-panel button,
+.menu-panel .menu-item {
+    appearance: none;
     width: 100%;
-    padding: 0.5rem 0; /* optional breathing room */
-    font-size: var(--base)
+    background: transparent;
+    border: 0;
+    color: var(--text);
+    text-align: left;
+
+    padding: 0.5rem 0.6rem;
+    border-radius: 6px;
+    font-size: var(--fs-base);
+    line-height: 1.2;
+    cursor: pointer;
+
+    transition: background 140ms ease, color 140ms ease;
+}
+
+.menu-panel button:hover,
+.menu-panel .menu-item:hover,
+.menu-panel button:focus-visible,
+.menu-panel .menu-item:focus-visible {
+    background: color-mix(in oklab, var(--accent) 12%, transparent);
+    outline: none;
+}
+
+/* Optional tiny divider utility if needed inside the panel */
+.menu-panel .menu-divider {
+    height: 1px;
+    margin: 0.25rem 0;
+    background: color-mix(in oklab, var(--border) 80%, transparent);
+    border: 0;
+}
+
+/* Let details control visibility; keep keyboard-friendly focus-open too */
+.menu[open] .menu-panel,
+.menu:focus-within .menu-panel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2, 0.5rem);
+}
+
+/* Optional: within the Theme dropdown, avoid absolute positioning of the selector */
+.menu-panel .menu-theme .theme-switcher {
+    position: static;
+}
+
+/* Top-right theme switcher */
+.theme-switcher {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.75rem;
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.theme-switcher select {
+    appearance: none;
+    -webkit-appearance: none;
+    background: var(--panel, #fff);
+    color: var(--text, #111);
+    border: 1px solid var(--border, #ddd);
+    border-radius: 8px;
+    padding: 0.35rem 0.65rem;
+    font-size: 0.9rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+    cursor: pointer;
+}
+
+.theme-switcher select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(14,165,233,0.25); /* fallback focus ring */
+}
+
+/* Visually hidden label for a11y */
+.visually-hidden {
+    position: absolute !important;
+    height: 1px; width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
+    clip-path: inset(50%);
+    border: 0; padding: 0; margin: -1px;
+}
+
+.header .title {
+    margin: 0 auto;
+    width: min(1100px, 100%);
+    padding: var(--space-4) var(--space-5);
 }
 
 .title h1 {
-    margin: 0em;
-    font-size: var(--h1);
-    font-weight: 600;
+    font-size: clamp(1.2rem, 1rem + 1.2vw, var(--fs-2xl));
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin: 0;
 }
 
 .title h2 {
-    margin: 0;
-    font-size: var(--h2)
+    font-size: clamp(0.95rem, 0.9rem + 0.4vw, var(--fs-lg));
+    color: var(--muted);
+    margin: 0.2rem 0 0 0;
+    font-weight: 450;
 }
 
+.main-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-7) var(--space-5);
+}
+
+.sentence {
+    width: min(1100px, 100%);
+    margin: 0 auto;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: clamp(var(--space-5), 2vw + var(--space-4), var(--space-8));
+
+    /* Center content nicely */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    /* Allow wrapping for long sequences */
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+/* 4) Morse display */
 .letter {
     display: inline-flex;
-    font-family: 'Courier New', Courier, monospace;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: var(--space-2);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
     font-size: var(--letter);
-    padding-right: 1rem;
-    line-height: 1.1;
+    padding: 0 var(--space-4);
+    color: var(--text);
 }
 
-/* First line: Morse code */
 .letter .morse {
-    display: block;
-    /*letter-spacing: -0.2em;*/
+    letter-spacing: -0.06em;
+    color: var(--morse); /* ensure visible across themes */
 }
 
-/* Second line: revealed letter */
 .letter .reveal {
     display: block;
     height: 1em;
     font-size: var(--letter-reveal);
-    margin-top: 0.15em; /* tiny gap between lines */
+    color: var(--muted);
 }
 
+/* Word spacing */
+.word-seperator {
+    display: inline-block;
+    width: 1.25rem;
+    height: 0;
+}
+
+/* Progress and status text */
 .progression {
     display: flex;
-    margin-top: 0rem;
-    margin-bottom: 0rem;
-    padding: 0rem 0; /* optional breathing room */
-    text-align: left;
-    width: 100%;
+    align-items: baseline;
+    gap: var(--space-3);
+    margin: var(--space-2) 0 var(--space-4);
+    color: var(--muted);
+    padding: var(--space-4) var(--space-5);
 }
 
 .progression h2 {
-    display: block;
-    margin-top: 0.5rem;
-    font-size: var(--h2);
-    font-weight: 300;
+    font-size: clamp(0.95rem, 0.9rem + 0.4vw, var(--fs-lg));
+    color: var(--muted);
+    margin: 0.2rem 0 0 0;
+    font-weight: 450;
 }
 
-/* Optional: spacing between words */
-.word-seperator {
-    display: inline-block;
-    width: 1.5rem; /* space width between words */
-    height: 0; /* no visible mark, just spacing */
-}
-
-.footer {
-    /*position: absolute;*/
-    /*bottom: 0;*/
-    width: 100%;
-}
-
-.sentence {
-    align-items: center;
-    width: 100%;
-}
-
-.perfect {
-    color: green;
-    font-size: var(--h1);
-    font-weight: 600;
-    margin-top: 1rem;
-}
-
-.navigation {
-    display: flex;
-    justify-content: center;
-    gap: 0.1em;
-    margin-top: 4rem;
-}
-
-input.text-container, .text-container:focus {
-    width: 30px; /* hide the input */
-    display: block;
-    margin-top: 2rem;
-    border: none;
-    height: 1em;
-    /*max-width: 600px;*/
-    padding: 0;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: var(--base);
-    /*color: rgb(255, 255, 255);*/
-    color: rgba(67, 67, 67, 0.31);
-    background-color: transparent;
-    cursor: default;
-    outline: none;
-    caret-color: transparent;
-    text-align: center;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    position: absolute;
-    z-index: 500;
-}
-
+/* Game stats row */
 .game-stats {
     display: flex;
-    justify-content: center;
-    gap: 0.1em;
     align-items: center;
-    font-size: var(--base);
-    margin-left: 1rem;
+    gap: var(--space-4);
+    font-size: var(--fs-sm);
+    color: var(--muted);
+    margin-top: var(--space-3);
 }
 
-.float-bottom-right {
-    /*position: absolute;*/
-    /*bottom: 16px; !* distance from bottom *!*/
-    /*right: 16px; !* distance from right *!*/
-    /*text-align: right !important;*/
-    /*z-index: 1000; !* ensure it stays on top *!*/
+/* Success state */
+.perfect {
+    color: color-mix(in oklab, var(--accent) 80%, white);
+    font-size: var(--fs-xl);
+    font-weight: 700;
+    margin-top: var(--space-4);
+}
+
+/* 5) Navigation buttons */
+.navigation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+    margin-top: var(--space-7);
+}
+
+.navigation button,
+.navigation .btn {
+    appearance: none;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    color: var(--text);
+    padding: 0.7rem 1rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    font-size: var(--fs-base);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    transition: transform 120ms ease, background 160ms ease, border-color 160ms ease, color 160ms ease, box-shadow 160ms ease;
+    cursor: pointer;
+}
+
+.navigation button:hover,
+.navigation .btn:hover {
+    border-color: color-mix(in oklab, var(--accent) 40%, var(--border));
+    box-shadow: 0 6px 16px color-mix(in oklab, var(--accent) 20%, transparent);
+    transform: translateY(-1px);
+}
+
+.navigation button:active,
+.navigation .btn:active {
+    transform: translateY(0);
+}
+
+/* Accent variant */
+.btn-primary {
+    background: var(--accent);
+    color: var(--accent-contrast);
+    border-color: color-mix(in oklab, var(--accent) 70%, var(--border));
+}
+
+.btn-primary:hover {
+    box-shadow: 0 8px 22px color-mix(in oklab, var(--accent) 40%, transparent);
+}
+
+/* Ghost variant */
+.btn-ghost {
+    background: transparent;
+    border-color: var(--border);
+    color: var(--text);
+}
+
+/* 6) Inputs (hidden typing field stays invisible but accessible) */
+input.text-container,
+.text-container:focus {
+    width: 1px;
+    opacity: 0;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    left: -9999px;
+}
+
+/* 7) Menu */
+.menu {
+    position: relative;
+    display: inline-block;
+    width: auto;
+    text-align: left;
+    z-index: 20;
+}
+
+.menu-header {
+    list-style: none;
+    user-select: none;
+    cursor: pointer;
+    font-weight: 600;
+    padding: var(--space-2) var(--space-3);
+    padding-left:0;
+    border-radius: var(--radius-sm);
+    color: var(--text);
+}
+
+.menu > summary::-webkit-details-marker {
+    display: none;
+}
+
+.menu-panel {
+    display: none; /* native <details> handles visibility with [open], CSS keeps hover/focus behavior if you use it */
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    min-width: 16rem;
+}
+
+/* Let details control visibility; keep keyboard-friendly focus-open too */
+.menu[open] .menu-panel,
+.menu:focus-within .menu-panel {
+    display: flex;
+    flex-direction: column;
+    gap: var(0, 0.5rem);
+}
+
+/* Optional: within the Theme dropdown, avoid absolute positioning of the selector */
+.menu-panel .menu-theme .theme-switcher {
+    position: static;
+}
+
+/* 9) Focus visibility and accessibility */
+:where(button, [role="button"], a, summary):focus-visible {
+    outline: none;
+    box-shadow: var(--focus);
+}
+
+/* 10) Responsive tweaks */
+@media (min-width: 640px) {
+    :root {
+        --letter: 2.4rem;
+        --letter-reveal: 1.35rem;
+    }
+}
+
+@media (min-width: 960px) {
+    :root {
+        --letter: 2.8rem;
+        --letter-reveal: 1.5rem;
+    }
+}
+
+/* 11) Motion sensitivity */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
 }
