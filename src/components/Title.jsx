@@ -1,5 +1,3 @@
-import * as PropTypes from "prop-types";
-
 export function Title({session}) {
     return <div className='title'>
         <h1>{session.description}</h1>
