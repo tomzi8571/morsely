@@ -26,7 +26,7 @@ export function App({examples = Examples(), enabled: focusEnabled = true}) {
 
     useEffect(() => {
         exerciseStatusManager.setKeyboard('');
-    }, [exerciseStatusManager, exerciseStatusManager.setKeyboard]);
+    }, [exerciseStatusManager.setKeyboard]);
 
     useEffect(() => {
         document.documentElement.style.setProperty('--app-height', `${viewport.sizes.visualViewport.height}px`);
