@@ -5,7 +5,9 @@
     gap: 0.7em;
     padding: 0.5em 0.2em;
     border-radius: 10px 10px 0 0;
-    width: min(98vw, 420px);
+    width: 100%; /* Grow with parent width */
+    min-width: 0; /* Prevent flexbox overflow */
+    flex-wrap: wrap; /* Allow wrapping on small screens */
     box-shadow: 0 -1px 6px rgba(0,0,0,0.04);
     background: var(--panel, #fff);
     border-top: 2px solid color-mix(in oklab, var(--accent, #0ea5e9) 40%, var(--border, #e6e7eb) 60%);

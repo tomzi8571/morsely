@@ -11,8 +11,12 @@ created new components for both
 - extracted some svg into its own files and folder
 - Added more exercises
 - added more favicons
-- moved for some react components the css into the .module.css files
-- added new documentation for AIprompts used during development
+- moved for some React components the css into the .module.css files
+- added new documentation for AI-prompts used during development
+- synced manifest.json and manifest.webmanifest for the PWA by
+letting it generate by the vite.config.js
+- added a serviceworker to reload  the app when a new version is deployed
+
 
 ## [0.1.0] 
 ### Added

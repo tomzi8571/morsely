@@ -15,6 +15,7 @@ import {SettingsMenu} from "./components/SettingsMenu.jsx";
 import {StreakIcon} from "./components/StreakIcon.jsx";
 import {HighscoreIcon} from "./components/HighscoreIcon.jsx";
 import {NavigationBar} from './components/NavigationBar.jsx';
+import { useServiceWorkerUpdater } from './components/useServiceWorkerUpdater.jsx';
 
 export function App({examples = Examples(), enabled: focusEnabled = true}) {
     const exerciseStatus = ExerciseStatus(examples);
@@ -29,6 +30,8 @@ export function App({examples = Examples(), enabled: focusEnabled = true}) {
     useEffect(() => {
         document.documentElement.style.setProperty('--app-height', `${viewport.sizes.visualViewport.height}px`);
     }, [viewport.sizes.visualViewport.height]);
+
+    useServiceWorkerUpdater({ interval: 60 * 60 * 1000 }); // Checks for updates every hour
 
     function addVersionInformation() {
         let version = `Version: ${import.meta.env.VITE_APP_VERSION || ''} Commit: ${import.meta.env.VITE_APP_COMMIT || ''} Built: ${import.meta.env.VITE_APP_BUILDTIME || ''}`;
