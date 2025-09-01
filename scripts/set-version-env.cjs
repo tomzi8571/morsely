@@ -3,20 +3,21 @@ const fs = require('fs');
 const {execSync} = require('child_process');
 const pkg = require('../package.json');
 
-// Set version as year.month.n
+// Set version as year.month.day.n
 const now = new Date();
 const year = now.getFullYear() % 100; // last two digits
 const month = now.getMonth() + 1; // 1-based month
+const day = now.getDate(); // 1-based day
 
 // Use n as patch, auto-incremented
 let n = 0;
 if (pkg.version) {
     const parts = pkg.version.split('.').map(Number);
-    if (parts.length === 3 && parts[0] === year && parts[1] === month) {
-        n = parts[2] + 1;
+    if (parts.length === 4 && parts[0] === year && parts[1] === month && parts[2] === day) {
+        n = parts[3] + 1;
     }
 }
-const newVersion = `${year}.${month}.${n}`;
+const newVersion = `${year}.${month}.${day}.${n}`;
 pkg.version = newVersion;
 fs.writeFileSync(__dirname + '/../package.json', JSON.stringify(pkg, null, 2) + '\n');
 

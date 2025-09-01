@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 
 ## [25.9.x] - 2025-09-1
-- introduce new version numbering year.month.patch
+- introduce new version numbering year.month.day.patch
 - updated UI
 - added new icons for streak and highscore and moved it to the top.
 created new components for both
