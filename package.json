@@ -1,11 +1,12 @@
 {
   "name": "morse-study-react",
   "private": true,
-  "version": "0.0.0",
+  "version": "25.9.8",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "prebuild": "node scripts/set-version-env.cjs",
+    "dev": "npm run prebuild && vite",
+    "build": "npm run prebuild && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -26,6 +27,7 @@
     "globals": "^16.3.0",
     "sharp": "^0.34.3",
     "vite": "^7.1.2",
-    "vite-plugin-pwa": "^1.0.3"
+    "vite-plugin-pwa": "^1.0.3",
+    "vite-plugin-svgr": "^4.5.0"
   }
 }

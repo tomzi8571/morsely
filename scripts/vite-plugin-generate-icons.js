@@ -7,7 +7,7 @@ export default function vitePluginGenerateIcons(options = {}) {
     const svgDestPath = path.resolve('./public/morsely_icon.svg');
     const outputDir = options.outputDir || path.resolve('./public/icons');
     const manifestPath = options.manifestPath || path.resolve('./public/manifest.json');
-    const sizes = options.sizes || [512, 192];
+    const sizes = options.sizes || [16, 32, 48, 64, 128, 192, 256, 384, 512];
     const safeZoneRatio = options.safeZoneRatio || 0.8;
 
     return {

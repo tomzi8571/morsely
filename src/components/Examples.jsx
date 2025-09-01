@@ -7,8 +7,7 @@ export const ProgressionPropType = PropTypes.shape({
 });
 
 export const SessionPropType = PropTypes.shape({
-    description: PropTypes.string.isRequired,
-    progressions: PropTypes.arrayOf(ProgressionPropType.isRequired).isRequired
+    description: PropTypes.string.isRequired, progressions: PropTypes.arrayOf(ProgressionPropType.isRequired).isRequired
 });
 
 // The top-level Examples() return value: keys like "1", "2", ... mapping to sessions
@@ -20,44 +19,94 @@ export function Examples() {
             "description": "Foundations (single + symmetric)",
             "subtitle": "E, T, I, M, A, N",
             "progressions": [
-                {"introduced": "E + T", "words": ["E", "T", "TE", "ET", "TEE", "TET"]},
+                {
+                    "introduced": "E + T",
+                    "words": ["E", "T", "TE", "ET", "TEE", "TET"],
+                    "sentences": [
+                        "Teetee.",
+                        "Tee.",
+                        "Tet.",
+                        "Et.",
+                        "Tee tee.",
+                        "Tet tee.",
+                        "Ett.",
+                        "Tee et.",
+                        "Tet et.",
+                        "Et tee.",
+                        "Tee tet.",
+                        "Tet tee et."
+                    ]
+                },
                 {
                     "introduced": "I",
-                    "words": ["I", "IT", "TI", "TIE", "ITE"],
+                    "words": ["I", "IT", "TI", "TIE", "ITE", "TEI", "ETI"],
                     "sentences": [
-                        "i tie it.",
-                        "i tie it in it.",
-                        "i tie it, i tie it."
+                        "I tie it.",
+                        "It tie.",
+                        "Tie it.",
+                        "Tie tee.",
+                        "Tee tie.",
+                        "I tie tee.",
+                        "Tie it tee.",
+                        "Tee it tie.",
+                        "It tee tie.",
+                        "Tie it, tee it.",
+                        "I tie it, tee it.",
+                        "Tie tee, it tie."
                     ]
                 },
                 {
                     "introduced": "M",
-                    "words": ["M", "ME", "EM", "MET", "MEET", "TIME", "EMIT"],
+                    "words": ["M", "ME", "EM", "MET", "TIME", "EMIT", "ITEM", "MIT"],
                     "sentences": [
-                        "i met it.",
-                        "i time it.",
-                        "i emit it in time.",
-                        "i meet it."
+                        "I met it.",
+                        "Me time.",
+                        "Emit it.",
+                        "Time me.",
+                        "Meet it.",
+                        "It met me.",
+                        "Me emit it.",
+                        "Mit time.",
+                        "Item time.",
+                        "Time item.",
+                        "Emit time.",
+                        "Met it, me time."
                     ]
                 },
                 {
                     "introduced": "A",
-                    "words": ["A", "AM", "MA", "ATE", "EAT", "TEA", "MEAT", "MATE", "TAME"],
+                    "words": ["A", "AM", "MA", "ATE", "EAT", "TEA", "MEAT", "MATE", "TAME", "TEAM", "META"],
                     "sentences": [
-                        "i am at a tea.",
-                        "i eat at a tea.",
-                        "i am at a team meet.",
-                        "i am a mate."
+                        "I am at a tea.",
+                        "Eat at a tea.",
+                        "A mate ate meat.",
+                        "Team ate meat.",
+                        "Mate ate.",
+                        "Am at a team.",
+                        "Tea mate.",
+                        "Meat ate.",
+                        "Ate meat.",
+                        "Team ate tea.",
+                        "Ate tea.",
+                        "Mate ate tea."
                     ]
                 },
                 {
                     "introduced": "N",
-                    "words": ["N", "AN", "NA", "ANT", "TAN", "TEN", "NET", "NEAT", "ANTE", "MEAN"],
+                    "words": ["N", "AN", "NA", "ANT", "TAN", "TEN", "NET", "NEAT", "ANTE", "MEAN", "MAN", "MINE", "MAIN"],
                     "sentences": [
-                        "i am in an inn.",
-                        "i mean it at ten.",
-                        "a neat man ate at ten.",
-                        "at ten i eat meat."
+                        "Ten men eat meat.",
+                        "A neat man ate at ten.",
+                        "Man met mate.",
+                        "Mean man ate meat.",
+                        "Main man ate meat.",
+                        "Mine meat.",
+                        "Net meat.",
+                        "Ant ate meat.",
+                        "Tan man ate meat.",
+                        "Ten ate meat.",
+                        "Man ate at ten.",
+                        "Neat man ate meat."
                     ]
                 }
             ]
@@ -70,40 +119,72 @@ export function Examples() {
                     "introduced": "S",
                     "words": ["S", "AS", "SA", "SAT", "SET", "SIT", "SANE", "SEAT", "SENT"],
                     "sentences": [
-                        "i sit.",
-                        "i set a seat.",
-                        "i sit as i set a seat.",
-                        "i sit as i see it."
+                        "I sit.",
+                        "Set a seat.",
+                        "Seat is sent.",
+                        "Sane seat is set.",
+                        "Sit as seat is set.",
+                        "Sent seat is sane.",
+                        "As seat is set.",
+                        "Sit at seat.",
+                        "Seat is as sane.",
+                        "Sane sit is set.",
+                        "Set seat as sane.",
+                        "Sit seat as sent."
                     ]
                 },
                 {
                     "introduced": "O",
                     "words": ["O", "TO", "ON", "ONE", "SOS", "TONE", "NOTE", "MOON", "STONE", "SOME"],
                     "sentences": [
-                        "one note to one.",
-                        "i see one stone.",
-                        "one note on one stone to one.",
-                        "one stone is on one."
+                        "One note to one.",
+                        "Moon is on one.",
+                        "Note is on stone.",
+                        "Stone is on moon.",
+                        "Some note is on one.",
+                        "Tone is on moon.",
+                        "One moon is on note.",
+                        "Note is on tone.",
+                        "Moon is on stone.",
+                        "Stone is on note.",
+                        "One stone is on moon.",
+                        "Note is on some moon."
                     ]
                 },
                 {
                     "introduced": "R",
                     "words": ["R", "AR", "RA", "EAR", "ERA", "EARN", "NEAR", "ORATE"],
                     "sentences": [
-                        "a rose is near.",
-                        "i earn a seat.",
-                        "a rare rose is near one area.",
-                        "a rare rose is near."
+                        "Rose is near.",
+                        "Rare ear is near.",
+                        "Earn is near.",
+                        "Area is near.",
+                        "Near ear is rare.",
+                        "Ear is near area.",
+                        "Rare area is near.",
+                        "Earn rare ear.",
+                        "Area is rare.",
+                        "Near area is rare.",
+                        "Ear is rare area.",
+                        "Rare earn is near."
                     ]
                 },
                 {
                     "introduced": "D",
                     "words": ["D", "AD", "DA", "DEAR", "READ", "TREAD", "SENDER"],
                     "sentences": [
-                        "i read a note.",
-                        "i read and send a note.",
-                        "i tread on a road and read a note.",
-                        "i read and reread."
+                        "Read a note.",
+                        "Sender read note.",
+                        "Dear sender read.",
+                        "Tread on road.",
+                        "Road is read.",
+                        "Sender is dear.",
+                        "Read and send note.",
+                        "Sender is on road.",
+                        "Dear road is read.",
+                        "Read sender note.",
+                        "Sender is read.",
+                        "Road is dear sender."
                     ]
                 }
             ]
@@ -116,40 +197,72 @@ export function Examples() {
                     "introduced": "L",
                     "words": ["L", "AL", "LA", "LATE", "TALE", "LEARN", "LANE", "LEAN", "LEND", "ALONE"],
                     "sentences": [
-                        "i learn a tale.",
-                        "a lane is near a wall.",
-                        "i lean on a lane and learn a tale.",
-                        "i learn as i lean."
+                        "Learn a tale.",
+                        "Lane is near wall.",
+                        "Lean on lane.",
+                        "Late lane is alone.",
+                        "Tale is late.",
+                        "Lean lane is late.",
+                        "Alone lane is lean.",
+                        "Wall is late.",
+                        "Tale is lean.",
+                        "Lane is tale.",
+                        "Lean tale is late.",
+                        "Late wall is lean."
                     ]
                 },
                 {
                     "introduced": "W",
                     "words": ["W", "AW", "WA", "WET", "WANE", "WEAR", "WORN", "WATER"],
                     "sentences": [
-                        "we are well.",
-                        "we wear a warm wrap.",
-                        "we water a lane as we walk.",
-                        "we write a note."
+                        "Wear a warm wrap.",
+                        "Wet wall is worn.",
+                        "Water lane as walk.",
+                        "Write a note.",
+                        "Warm wall is wet.",
+                        "Wane is near wall.",
+                        "Wrap is warm.",
+                        "Wall is water.",
+                        "Walk is near wall.",
+                        "Wall is walk.",
+                        "Wet wrap is warm.",
+                        "Water is near wall."
                     ]
                 },
                 {
                     "introduced": "J",
                     "words": ["J", "JA", "JO", "JET", "JOT", "JAM", "JAR", "JANET"],
                     "sentences": [
-                        "jo and jan jot.",
-                        "janet jots a note.",
-                        "jo and jan jot as janet jots a note.",
-                        "janet and jo join."
+                        "Janet jots a note.",
+                        "Jo and Jan jot.",
+                        "Jam is in jar.",
+                        "Jet is near wall.",
+                        "Jot a note.",
+                        "Jar is near lane.",
+                        "Janet joins Jo.",
+                        "Janet is near wall.",
+                        "Jo is near lane.",
+                        "Janet is in jar.",
+                        "Jo jams a note.",
+                        "Janet jets a note."
                     ]
                 },
                 {
                     "introduced": "P",
                     "words": ["P", "PA", "AP", "PEAR", "PEARL", "LEAP", "TAPE", "SPARE", "PARSE", "PROSE"],
                     "sentences": [
-                        "we plan a step.",
-                        "we tape a page and prep a plan.",
-                        "we plan a trip and tape a spare page.",
-                        "we prep a plan."
+                        "Plan a step.",
+                        "Tape a page.",
+                        "Prep a plan.",
+                        "Leap at lane.",
+                        "Pearl is near wall.",
+                        "Page is spare.",
+                        "Parse a note.",
+                        "Prose is neat.",
+                        "Page is at lane.",
+                        "Pear is at wall.",
+                        "Spare tape is neat.",
+                        "Leap is at lane."
                     ]
                 }
             ]
@@ -162,40 +275,65 @@ export function Examples() {
                     "introduced": "K",
                     "words": ["K", "AK", "KA", "AKE", "TAKE", "MAKER", "TOKEN", "OAKEN", "WORK", "YOKE"],
                     "sentences": [
-                        "we take a seat.",
-                        "we make a token.",
-                        "we take a token and make a work plan.",
-                        "we take a walk."
+                        "Oak trees can live for centuries.",
+                        "Tokens mark rare events.",
+                        "Work on a new task.",
+                        "Take a seat near a stone.",
+                        "Maker sets a neat token.",
+                        "Yoke joins two oxen.",
+                        "Kite soars on a windy day.",
+                        "Kangaroo can leap far.",
+                        "Keen minds make new work.",
+                        "Oaken wood is strong.",
+                        "Kids take notes in class."
                     ]
                 },
                 {
                     "introduced": "X",
                     "words": ["X", "AX", "OX", "TAX", "AXE", "AXON", "ANNEX", "EXTRA"],
                     "sentences": [
-                        "we tax a taxi.",
-                        "we axe an oak at six.",
-                        "we annex a zone next to a taxi.",
-                        "an annex is next."
+                        "Axon sends a note.",
+                        "Annex is next to a zone.",
+                        "Tax on an ox is rare.",
+                        "Extra time means more.",
+                        "Axe is on a stone.",
+                        "Xenon is a rare gas.",
+                        "Exact time is key.",
+                        "Oxen work on a farm.",
+                        "Axis marks a point.",
+                        "Exam is next week."
                     ]
                 },
                 {
                     "introduced": "C",
                     "words": ["C", "AC", "CA", "ACE", "CONE", "CANE", "CAME", "CRANE", "SCAR", "SCONE", "CORN"],
                     "sentences": [
-                        "we can act.",
-                        "we scan a scene and set a cone.",
-                        "we can set a cone on a cart near a crane.",
-                        "we cart a cone."
+                        "Cane is a neat tool.",
+                        "Corn is a main crop.",
+                        "Crane can move a stone.",
+                        "Scar on a cone is rare.",
+                        "Scone is a treat.",
+                        "Cats can act fast.",
+                        "Came across a rare coin.",
+                        "Crane lifts a heavy load.",
+                        "Cane sugar is sweet.",
+                        "Cone marks a lane."
                     ]
                 },
                 {
                     "introduced": "Y",
                     "words": ["Y", "AY", "YA", "YEA", "YORE", "YEAR", "YARN", "YEARN", "YOKE", "YON"],
                     "sentences": [
-                        "we say yes.",
-                        "we stay one year.",
-                        "we say yes and stay one year at a cozy yard.",
-                        "we enjoy an easy year."
+                        "Yarn is made of wool.",
+                        "Year marks a new start.",
+                        "Yoke joins a team.",
+                        "Yon is far away.",
+                        "Yea means yes.",
+                        "Young stars shine bright.",
+                        "Yawn at dawn.",
+                        "Yore means long ago.",
+                        "Yard is neat and open.",
+                        "Yaks roam on a plain."
                     ]
                 }
             ]
@@ -208,30 +346,47 @@ export function Examples() {
                     "introduced": "G",
                     "words": ["G", "AG", "GA", "AGE", "GORE", "GEAR", "ORGAN", "ARGON"],
                     "sentences": [
-                        "we go on a road.",
-                        "we get a goal and a gear.",
-                        "we go along a long road and gather gear.",
-                        "we go along and agree."
+                        "Gear moves a gate.",
+                        "Organ is a rare item.",
+                        "Age marks a stage.",
+                        "Argon is a gas.",
+                        "Gore is on a mat.",
+                        "Goat climbs a steep rock.",
+                        "Gale winds are strong.",
+                        "Gears turn in a clock.",
+                        "Game is set to start.",
+                        "Gold is a soft metal."
                     ]
                 },
                 {
                     "introduced": "Z",
                     "words": ["Z", "AZ", "ZA", "ZOO", "ZONA", "ZING", "ZONER", "AMAZE"],
                     "sentences": [
-                        "we see a zoo.",
-                        "a zone is near a rose.",
-                        "we gaze at a zoo in a safe zone.",
-                        "we gaze at a zone."
+                        "Zone is near a gate.",
+                        "Zing adds energy.",
+                        "Maze is a test.",
+                        "Zoner sets a mark.",
+                        "Gaze at a star.",
+                        "Zero marks the start.",
+                        "Zebra runs fast.",
+                        "Zinc is a useful metal.",
+                        "Zest adds flavor.",
+                        "Zoom in on a map."
                     ]
                 },
                 {
                     "introduced": "Q",
                     "words": ["Q", "QA", "QAT", "QANAT"],
                     "sentences": [
-                        "a qat is rare.",
-                        "a qanat at a zone.",
-                        "a qanat at an oasis zone is near.",
-                        "a q is on a note."
+                        "Qat is a rare plant.",
+                        "Qanat is an ancient tunnel.",
+                        "Quota sets a mark.",
+                        "Quest means a test.",
+                        "Quake shakes the land.",
+                        "Quick action saves time.",
+                        "Queen leads a team.",
+                        "Quotient is a math term.",
+                        "Quail is a small bird."
                     ]
                 }
             ]
@@ -244,30 +399,48 @@ export function Examples() {
                     "introduced": "H",
                     "words": ["H", "AH", "HA", "HEAT", "HATE", "HINT", "HORN", "HONOR", "HEART"],
                     "sentences": [
-                        "he is here.",
-                        "he has a hat at noon.",
-                        "he hears a horn and has a hot tea.",
-                        "he hears a horn."
+                        "Heat rises at noon.",
+                        "Horn marks a start.",
+                        "Honor means respect.",
+                        "Heart is a vital organ.",
+                        "Hate is rare.",
+                        "Hill stands tall.",
+                        "Hawk soars high.",
+                        "Halt at the gate.",
+                        "Herd moves as one.",
+                        "Hero acts with honor."
                     ]
                 },
                 {
                     "introduced": "V",
                     "words": ["V", "AV", "VA", "VIA", "VINE", "VEIN", "OVEN", "RIVEN", "NERVE", "RIVET"],
                     "sentences": [
-                        "we have a view.",
-                        "a vine is over a wall.",
-                        "we save a vase and revive a service.",
-                        "we save a view."
+                        "Vine grows on stone.",
+                        "Oven bakes a treat.",
+                        "Vein runs in meat.",
+                        "Nerve sends a note.",
+                        "Save a rare vase.",
+                        "Vast area is open.",
+                        "Vivid colors shine.",
+                        "Vane turns in wind.",
+                        "Vast view from hill.",
+                        "Vast veins in leaf."
                     ]
                 },
                 {
                     "introduced": "F",
                     "words": ["F", "AF", "FA", "FAN", "FAR", "FINE", "FATE", "FAIR", "FAVOR"],
                     "sentences": [
-                        "we find a safe site.",
-                        "we favor a fine idea.",
-                        "we finish a fast task and favor a fair plan.",
-                        "we find a fine fit."
+                        "Fan moves air.",
+                        "Fate means a set path.",
+                        "Favor is a rare act.",
+                        "Fair means even.",
+                        "Fine art is neat.",
+                        "Farm grows food.",
+                        "Fast train runs far.",
+                        "Faint star is seen.",
+                        "Fame is hard to earn.",
+                        "Ferns grow in shade."
                     ]
                 }
             ]
@@ -280,10 +453,16 @@ export function Examples() {
                     "introduced": "U",
                     "words": ["U", "AU", "UA", "UT", "TUN", "TUNE", "UNIT", "AUNT", "UNDO"],
                     "sentences": [
-                        "we tune a unit.",
-                        "you and i unite at noon.",
-                        "we tune a unit and undo an issue.",
-                        "we use a unit at noon."
+                        "Unit tests are vital.",
+                        "Aunt is at a tune.",
+                        "Undo a neat item.",
+                        "Tune is set at noon.",
+                        "Utah is a state.",
+                        "Unique ideas win.",
+                        "Unite for a cause.",
+                        "Usual time is noon.",
+                        "Ultra sound is used.",
+                        "Under a unit is a nut."
                     ]
                 }
             ]
@@ -296,13 +475,25 @@ export function Examples() {
                     "introduced": "B",
                     "words": ["B", "AB", "BA", "BAN", "BEAN", "BEAR", "BARN", "BAND", "BOARD", "ABROAD", "BRAND"],
                     "sentences": [
-                        "a big bag is on a van.",
-                        "a barn is by a road and a bay.",
-                        "a brave band brings a board aboard a boat.",
-                        "a big blue bus is by a bay."
+                        "Bean is a main crop.",
+                        "Band sets a new record.",
+                        "Board is on a stand.",
+                        "Brand marks a name.",
+                        "Barn stores oats.",
+                        "Boat sails on a bay.",
+                        "Brave bear stands tall.",
+                        "Bread is baked fresh.",
+                        "Blue barn is rare.",
+                        "Big band plays music."
                     ]
                 }
             ]
         }
-    }
+
+    };
 }
+
+// Koch method improvement stub:
+// To fully implement the Koch method, add logic to track user accuracy for the current set of letters.
+// Only unlock the next progression when mastery (e.g., 90% accuracy) is achieved.
+// Practice should always be at full target speed.

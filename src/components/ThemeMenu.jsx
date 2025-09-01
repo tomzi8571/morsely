@@ -1,7 +1,7 @@
 // ThemeMenu.jsx
 import React, {useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import HeaderMenu from "./HeaderMenu.jsx";
+import {HeaderMenu} from "./HeaderMenu.jsx";
 
 const ThemeIcon = (props) => (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true" {...props}>

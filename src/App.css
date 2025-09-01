@@ -8,7 +8,6 @@
 }
 
 html, body {
-    height: auto;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -89,6 +88,8 @@ body {
         --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
         --shadow-md: 0 6px 24px rgba(0, 0, 0, 0.45);
         --morse: #e5e7eb;
+        /** Fallback, this is set dynamically in App.jsx to ensure the footer is always at the bottom of the viewport.**/
+        --app-height: 100svh;
     }
 }
 
@@ -158,7 +159,9 @@ body {
 .app-container {
     display: flex;
     flex-direction: column;
-    min-height: 100dvh;
+    /*min-height: 100dvh;*/
+    /** --app-height is set in App.jsx to ensure the footer is always at the bottom of the viewport.  */
+    height: var(--app-height);
     background: var(--bg);
     color: var(--text);
     font-size: var(--fs-base);
@@ -171,14 +174,9 @@ body {
 
 .header {
     display: flex;
-    /*position: absolute;*/
-    /*z-index: 1000;*/
-    /*top: 0;*/
-    /*left: 0;*/
-    width: 100%;
-    /*height: auto;*/
-    background: inherit;
     flex-direction: column;
+    width: 100%;
+    background: inherit;
     font-size: inherit;
     padding-right: 1rem;
     line-height: 1.1;
@@ -193,92 +191,11 @@ body {
     padding: var(--space-4, 1rem) var(--space-5, 1.25rem) 0;
 }
 
-/* Ensure each dropdown trigger is inline and anchors its own panel */
-.menu {
-    position: relative;
-    display: inline-block;
-    width: auto;
-    text-align: left;
-    z-index: 20;
-}
-
-.menu > summary::-webkit-details-marker {
-    display: none;
-}
-
-/* Simpler, clean dropdown panel */
-.menu-panel {
-    display: none; /* shown when details is open */
-    position: absolute;
-    top: calc(100% + 0.5rem);
-    left: 0;
-
-    min-width: 14rem;
-    max-width: 90vw;
-
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sm);
-    box-shadow: var(--shadow-sm);
-    padding: 0.35rem;
-
-    /* compact vertical stack */
-    gap: 0;
-}
-
-/* Show when native <details> is open or focused for keyboard users */
-.menu[open] .menu-panel,
-.menu:focus-within .menu-panel {
+.header-bar-icons {
+    margin-left: auto;
     display: flex;
-    flex-direction: column;
-}
-
-/* Menu items */
-.menu-panel button,
-.menu-panel .menu-item {
-    appearance: none;
-    width: 100%;
-    background: transparent;
-    border: 0;
-    color: var(--text);
-    text-align: left;
-
-    padding: 0.5rem 0.6rem;
-    border-radius: 6px;
-    font-size: var(--fs-base);
-    line-height: 1.2;
-    cursor: pointer;
-
-    transition: background 140ms ease, color 140ms ease;
-}
-
-.menu-panel button:hover,
-.menu-panel .menu-item:hover,
-.menu-panel button:focus-visible,
-.menu-panel .menu-item:focus-visible {
-    background: color-mix(in oklab, var(--accent) 12%, transparent);
-    outline: none;
-}
-
-/* Optional tiny divider utility if needed inside the panel */
-.menu-panel .menu-divider {
-    height: 1px;
-    margin: 0.25rem 0;
-    background: color-mix(in oklab, var(--border) 80%, transparent);
-    border: 0;
-}
-
-/* Let details control visibility; keep keyboard-friendly focus-open too */
-.menu[open] .menu-panel,
-.menu:focus-within .menu-panel {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2, 0.5rem);
-}
-
-/* Optional: within the Theme dropdown, avoid absolute positioning of the selector */
-.menu-panel .menu-theme .theme-switcher {
-    position: static;
+    gap: 1.5em;
+    align-items: center;
 }
 
 /* Top-right theme switcher */
@@ -294,7 +211,6 @@ body {
 
 .theme-switcher select {
     appearance: none;
-    -webkit-appearance: none;
     background: var(--panel, #fff);
     color: var(--text, #111);
     border: 1px solid var(--border, #ddd);
@@ -308,17 +224,6 @@ body {
 .theme-switcher select:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba(14,165,233,0.25); /* fallback focus ring */
-}
-
-/* Visually hidden label for a11y */
-.visually-hidden {
-    position: absolute !important;
-    height: 1px; width: 1px;
-    overflow: hidden;
-    clip: rect(1px, 1px, 1px, 1px);
-    white-space: nowrap;
-    clip-path: inset(50%);
-    border: 0; padding: 0; margin: -1px;
 }
 
 .header .title {
@@ -446,7 +351,9 @@ body {
 }
 
 .navigation button,
-.navigation .btn {
+.navigation .btn,
+.btn-primary,
+.btn-ghost {
     appearance: none;
     border: 1px solid var(--border);
     background: var(--panel);
@@ -462,7 +369,8 @@ body {
 }
 
 .navigation button:hover,
-.navigation .btn:hover {
+.navigation .btn:hover,
+.btn-primary:hover {
     border-color: color-mix(in oklab, var(--accent) 40%, var(--border));
     box-shadow: 0 6px 16px color-mix(in oklab, var(--accent) 20%, transparent);
     transform: translateY(-1px);
@@ -503,51 +411,6 @@ input.text-container,
     left: -9999px;
 }
 
-/* 7) Menu */
-.menu {
-    position: relative;
-    display: inline-block;
-    width: auto;
-    text-align: left;
-    z-index: 20;
-}
-
-.menu-header {
-    list-style: none;
-    user-select: none;
-    cursor: pointer;
-    font-weight: 600;
-    padding: var(--space-2) var(--space-3);
-    padding-left:0;
-    border-radius: var(--radius-sm);
-    color: var(--text);
-}
-
-.menu > summary::-webkit-details-marker {
-    display: none;
-}
-
-.menu-panel {
-    display: none; /* native <details> handles visibility with [open], CSS keeps hover/focus behavior if you use it */
-    position: absolute;
-    top: calc(100% + 0.5rem);
-    left: 0;
-    min-width: 16rem;
-}
-
-/* Let details control visibility; keep keyboard-friendly focus-open too */
-.menu[open] .menu-panel,
-.menu:focus-within .menu-panel {
-    display: flex;
-    flex-direction: column;
-    gap: var(0, 0.5rem);
-}
-
-/* Optional: within the Theme dropdown, avoid absolute positioning of the selector */
-.menu-panel .menu-theme .theme-switcher {
-    position: static;
-}
-
 /* 9) Focus visibility and accessibility */
 :where(button, [role="button"], a, summary):focus-visible {
     outline: none;
@@ -576,4 +439,42 @@ input.text-container,
         transition: none !important;
         scroll-behavior: auto !important;
     }
+}
+
+a {
+    font-weight: 500;
+    color: var(--accent, #0ea5e9);
+    text-decoration: inherit;
+    transition: color 0.18s;
+}
+a:hover {
+    color: color-mix(in oklab, var(--accent) 70%, var(--text));
+}
+
+h1 {
+    font-size: 3.2em;
+    line-height: 1.1;
+}
+
+button {
+    border-radius: var(--radius-md, 12px);
+    border: 1px solid var(--border, #e6e7eb);
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: var(--panel, #fff);
+    color: var(--text, #14151a);
+    cursor: pointer;
+    transition: border-color 0.18s, background 0.18s, color 0.18s;
+}
+button:hover {
+    border-color: var(--accent, #0ea5e9);
+    background: var(--bg-elev, #f7f7f9);
+    color: var(--accent, #0ea5e9);
+}
+button:focus,
+button:focus-visible {
+    outline: 3px solid var(--accent, #0ea5e9);
+    outline-offset: 2px;
 }

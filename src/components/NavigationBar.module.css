@@ -1,0 +1,54 @@
+.navigationBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.7em;
+    padding: 0.5em 0.2em;
+    border-radius: 10px 10px 0 0;
+    width: min(98vw, 420px);
+    box-shadow: 0 -1px 6px rgba(0,0,0,0.04);
+    background: var(--panel, #fff);
+    border-top: 2px solid color-mix(in oklab, var(--accent, #0ea5e9) 40%, var(--border, #e6e7eb) 60%);
+}
+
+.navBtn {
+    padding: 0.35em 0.45em;
+    font-size: 1.15em;
+    border-radius: 50%;
+    min-width: 32px;
+    min-height: 32px;
+    margin: 0 0.05em;
+    background: var(--panel, #fff);
+    color: var(--text, #14151a);
+    border: 2px solid var(--border, #e6e7eb);
+    transition: background 0.18s, color 0.18s, border-color 0.18s, box-shadow 0.18s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navBtn:hover:not(:disabled),
+.navBtn:focus-visible:not(:disabled) {
+    background: var(--bg-elev, #f7f7f9);
+    color: var(--accent, #0ea5e9);
+    border-color: var(--accent, #0ea5e9);
+    box-shadow: 0 2px 8px color-mix(in oklab, var(--accent) 30%, transparent);
+}
+
+.navBtn:active:not(:disabled) {
+    background: var(--accent, #0ea5e9);
+    color: var(--accent-contrast, #fff);
+}
+
+.navBtn:disabled {
+    background: var(--bg-elev, #f7f7f9);
+    color: var(--muted, #656b7a);
+    border-color: var(--border, #e6e7eb);
+    opacity: 0.5;
+    box-shadow: none;
+}
+
+.navBtn:active {
+    transform: scale(0.3);
+    transition: transform 0.6s;
+}

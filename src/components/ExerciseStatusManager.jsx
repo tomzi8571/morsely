@@ -1,4 +1,5 @@
 import {useCallback, useEffect, useState} from "react";
+import PropTypes from "prop-types";
 
 export function ExerciseStatusManager(exerciseStatus, viewport) {
     const [revealed, setRevealed] = useState(false);
@@ -146,3 +147,8 @@ export function ExerciseStatusManager(exerciseStatus, viewport) {
         setStatistics: setStatistics,
     };
 }
+
+ExerciseStatusManager.propTypes = {
+    exerciseStatus: PropTypes.object.isRequired,
+    viewport: PropTypes.object
+};
