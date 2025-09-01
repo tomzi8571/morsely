@@ -20,6 +20,7 @@ import { useServiceWorkerUpdater } from './components/useServiceWorkerUpdater.js
 export function App({examples = Examples(), enabled: focusEnabled = true}) {
     const exerciseStatus = ExerciseStatus(examples);
     const viewport = Viewport(false);
+    let pwaUpdateCheckEvery = 1 * 60 * 1000; // 1 minute
 
     const exerciseStatusManager = ExerciseStatusManager(exerciseStatus, viewport);
 
@@ -30,8 +31,7 @@ export function App({examples = Examples(), enabled: focusEnabled = true}) {
     useEffect(() => {
         document.documentElement.style.setProperty('--app-height', `${viewport.sizes.visualViewport.height}px`);
     }, [viewport.sizes.visualViewport.height]);
-
-    useServiceWorkerUpdater({ interval: 60 * 60 * 1000 }); // Checks for updates every hour
+    useServiceWorkerUpdater({ interval: pwaUpdateCheckEvery }); // Checks for updates every minute
 
     function addVersionInformation() {
         let version = `Version: ${import.meta.env.VITE_APP_VERSION || ''} Commit: ${import.meta.env.VITE_APP_COMMIT || ''} Built: ${import.meta.env.VITE_APP_BUILDTIME || ''}`;
