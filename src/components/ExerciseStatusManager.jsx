@@ -1,7 +1,11 @@
 import {useCallback, useEffect, useState} from "react";
 import PropTypes from "prop-types";
+import { getLogger } from '../logger';
 
 export function ExerciseStatusManager(exerciseStatus, viewport) {
+    const logger = getLogger('ExerciseStatusManager');
+    // Set log level for this component (can be 'trace', 'debug', 'info', 'warn', 'error')
+
     const [revealed, setRevealed] = useState(false);
     const [keyboard, setKeyboard] = useState("");
     const [wordSuccessfullyGuessed, setWordSuccessfullyGuessed] = useState(false);
@@ -11,9 +15,9 @@ export function ExerciseStatusManager(exerciseStatus, viewport) {
         let initialStats = null
         try {
             initialStats = JSON.parse(localStorage.getItem('exerciseStatistics'))
-            // console.log("Loading statisitcs from local storage", initialStats);
+            logger.debug("Loading statistics from local storage", initialStats);
         } catch (e) {
-            console.error("Error parsing local storage", e);
+            logger.error("Error parsing local storage", e);
         }
         if (initialStats === null) {
             initialStats = {streak: 0, high: 0};
@@ -23,7 +27,7 @@ export function ExerciseStatusManager(exerciseStatus, viewport) {
 
     useEffect(() => {
         localStorage.setItem('exerciseStatistics', JSON.stringify(statistics));
-        // console.log("Saving statisitcs", statistics);
+        logger.debug("Saving statistics", statistics);
     }, [statistics]);
 
     const resetForNext = useCallback(() => {
@@ -56,6 +60,7 @@ export function ExerciseStatusManager(exerciseStatus, viewport) {
     }, [exerciseStatus, resetForNext]);
 
     const nextExercise = useCallback(() => {
+        logger.debug("nextExercise");
         exerciseStatus.nextExercise();
         resetForNext();
     }, [exerciseStatus, resetForNext]);
@@ -69,7 +74,9 @@ export function ExerciseStatusManager(exerciseStatus, viewport) {
     );
 
     const onKeyDown = useCallback(
+
         (e) => {
+            logger.debug("onKeyDown", e);
             if (e.type === "keydown" && e.key === "Enter" && e.target.value.length > 0) {
                 e.preventDefault();
                 nextExercise();
@@ -92,6 +99,7 @@ export function ExerciseStatusManager(exerciseStatus, viewport) {
 
     const onChange = useCallback(
         (e) => {
+            logger.debug("onChange", e);
             if (e.nativeEvent?.isComposing) return;
 
             const value = e.target.value ?? "";

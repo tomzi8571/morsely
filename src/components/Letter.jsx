@@ -1,6 +1,9 @@
 import {useEffect, useState} from "react";
+import { getLogger } from '../logger';
 
 export function Letter({letter, alphabet, highlightKey, highlight, reveal = false}) {
+    const logger = getLogger('Letter');
+
     const [match, setMatch] = useState();
     const [genHighlightKey, setGenHighlightKey] = useState();
 
@@ -13,12 +16,12 @@ export function Letter({letter, alphabet, highlightKey, highlight, reveal = fals
         setMatch(() => matcher);
         let genKey = String(highlightKey).replace(/ /g, '-').toLowerCase();
         setGenHighlightKey(() => genKey)
-        // console.log(genKey)
+        logger.debug(genKey)
     })
 
     const currentHighlightKey = String(highlight).replace(/ /g, '-').toLowerCase();
     const highlightLetter = String(currentHighlightKey).startsWith(String(genHighlightKey));
-    // console.log({progression: letter, highlight, genHighlightKey, currentHighlightKey, highlightLetter});
+        logger.debug({progression: letter, highlight, genHighlightKey, currentHighlightKey, highlightLetter});
 
     return (
         <span>
@@ -30,4 +33,3 @@ export function Letter({letter, alphabet, highlightKey, highlight, reveal = fals
         </span>
     );
 }
-

@@ -1,68 +1,94 @@
-import React, { useEffect, useRef } from 'react';
+import React, {useEffect, useRef, forwardRef, useImperativeHandle} from 'react';
 import PropTypes from 'prop-types';
+import { getLogger } from '../logger';
 
-export function KeyboardCaptureInput({
-  value,
-  onChange,
-  onKeyDown,
-  maxLength,
-  enabled = true,
-  className = 'text-container float-bottom-right',
-  allowFocusLossSelectors = ['.theme-switcher', '.menu', '.menu-panel'],
-  autoFocus = true,
-  ariaHidden = true,
-}) {
-  const inputRef = useRef(null);
+const KeyboardCaptureInput = forwardRef(({
+                                         value,
+                                         onChange,
+                                         onKeyDown,
+                                         maxLength,
+                                         enabled = false,
+                                         className = 'text-container float-bottom-right',
+                                         allowFocusLossSelectors = ['.theme-switcher', '.menu', '.menu-panel', '.allowClick'],
+                                         autoFocus = false,
+                                         ariaHidden = true,
+                                     }, ref) => {
+    const inputRef = useRef(null);
+    const logger = getLogger('KeyboardCaptureInput');
 
-  // Initial focus when enabled
-  useEffect(() => {
-    if (!enabled || !autoFocus) return;
-    inputRef.current?.focus({ preventScroll: true });
-  }, [enabled, autoFocus]);
+    useImperativeHandle(ref, () => ({
+        focusInput: (options = {preventScroll: true}) => {
+            logger.debug("Focus input");
+            inputRef.current?.focus(options);
+        }
+    }));
 
-  // Restore focus on blur unless leaving to allowed UI
-  const onBlur = (e) => {
-    if (!enabled) return;
+// Initial focus when enabled
+    useEffect(() => {
+        if (!enabled || !autoFocus) return;
+        inputRef.current?.focus({preventScroll: true});
+    }, [enabled, autoFocus]);
 
-    const next = e?.relatedTarget || document.activeElement;
-    const isAllowedTarget =
-      next &&
-      typeof next.closest === 'function' &&
-      allowFocusLossSelectors.some((sel) => next.closest?.(sel));
+    // Restore focus on blur unless leaving to allowed UI
+    const onBlur = (e) => {
+        if (!enabled) return;
 
-    if (isAllowedTarget) return;
+        const next = e?.relatedTarget || document.activeElement;
+        const isAllowedTarget =
+            next &&
+            typeof next.closest === 'function' &&
+            allowFocusLossSelectors.some((sel) =>
+                next.matches?.(sel) || next.closest?.(sel)
+            );
 
-    // Restore focus
-    setTimeout(() => inputRef.current?.focus({ preventScroll: true }), 0);
-  };
+        logger.debug({
+            isAllowedTarget,
+            next,
+            selectors: allowFocusLossSelectors,
+            matches: allowFocusLossSelectors.map(sel => next.matches?.(sel)),
+            closest: allowFocusLossSelectors.map(sel => next.closest?.(sel))
+        });
 
-  return (
-    <input
-      type="text"
-      value={value}
-      onChange={onChange}
-      onKeyDown={onKeyDown}
-      maxLength={maxLength}
-      onBlur={onBlur}
-      ref={inputRef}
-      className={className}
-      autoComplete="off"
-      autoCorrect="off"
-      autoCapitalize="off"
-      spellCheck="false"
-      aria-hidden={ariaHidden}
-    />
-  );
-}
+        if (isAllowedTarget) return;
 
-KeyboardCaptureInput.propTypes = {
-  value: PropTypes.string,
-  onChange: PropTypes.func,
-  onKeyDown: PropTypes.func,
-  maxLength: PropTypes.number,
-  enabled: PropTypes.bool,
-  className: PropTypes.string,
-  allowFocusLossSelectors: PropTypes.arrayOf(PropTypes.string),
-  autoFocus: PropTypes.bool,
-  ariaHidden: PropTypes.bool,
+        // Restore focus
+        if (autoFocus) {
+            logger.debug("Restoring focus");
+            setTimeout(() => inputRef.current?.focus({preventScroll: true}), 0);
+        }
+    };
+
+    return (
+        <input
+            type="text"
+            value={value}
+            onChange={onChange}
+            onKeyDown={onKeyDown}
+            maxLength={maxLength}
+            onBlur={onBlur}
+            ref={inputRef}
+            className={className}
+            inputMode="text"         // Prevents keyboard suggestions
+            autoComplete="off"       // Disables autofill (passwords, cards, etc.)
+            autoCorrect="off"        // Disables autocorrect
+            autoCapitalize="none"    // Prevents automatic capitalization
+            spellCheck={false}       // Disables spell checking
+            name="nohint"            // Avoids triggering autofill heuristics
+            aria-hidden={ariaHidden} // Optional: hides from screen readers
+        />
+    );
+});
+
+KeyboardCaptureInput.PropTypes = {
+    value: PropTypes.string,
+    onChange: PropTypes.func,
+    onKeyDown: PropTypes.func,
+    maxLength: PropTypes.number,
+    enabled: PropTypes.bool,
+    className: PropTypes.string,
+    allowFocusLossSelectors: PropTypes.arrayOf(PropTypes.string),
+    autoFocus: PropTypes.bool,
+    ariaHidden: PropTypes.bool,
 };
+
+export {KeyboardCaptureInput};

@@ -16,7 +16,6 @@ export function SessionMenu({examples, onSelectSession, show = "icon"}) {
         summaryLabel="Menu"
         summaryAriaLabel="Menu"
         summaryIcon={<MenuIcon/>}
-        defaultOpen={false}
         show={show}
     >
         {Object.entries(examples).map((session, idx) => (

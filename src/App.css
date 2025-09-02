@@ -155,22 +155,34 @@ body {
 }
 
 /* 3) App layout */
+
+/** BEGIN Full screen values **/
 #root,
 .app-container {
     display: flex;
     flex-direction: column;
     /*min-height: 100dvh;*/
     /** --app-height is set in App.jsx to ensure the footer is always at the bottom of the viewport.  */
-    height: var(--app-height);
+    height: var(--app-height, 100svh);
     background: var(--bg);
     color: var(--text);
     font-size: var(--fs-base);
+    /**Height of the keyboard to ensure the footer is always at the bottom of the viewport.**/
+    padding-bottom: env(keyboard-inset-height, 0px);
 }
 
 .header,
 .footer {
     flex-shrink: 0;
 }
+
+.main-container {
+    flex-grow: 1;
+    display: flex;
+}
+
+/** BEGIN Full screen values **/
+
 
 .header {
     display: flex;
@@ -247,8 +259,6 @@ body {
 }
 
 .main-container {
-    flex: 1;
-    display: flex;
     align-items: center;
     justify-content: center;
     padding: var(--space-7) var(--space-5);
@@ -409,6 +419,7 @@ input.text-container,
     margin: 0;
     position: absolute;
     left: -9999px;
+    bottom: 0;
 }
 
 /* 9) Focus visibility and accessibility */
