@@ -1,3 +1,4 @@
+import React, { useRef } from 'react';
 import {useEffect} from 'react'
 import './App.css'
 
@@ -16,8 +17,21 @@ import {StreakIcon} from "./components/StreakIcon.jsx";
 import {HighscoreIcon} from "./components/HighscoreIcon.jsx";
 import {NavigationBar} from './components/NavigationBar.jsx';
 import { useServiceWorkerUpdater } from './components/useServiceWorkerUpdater.jsx';
+import { getLogger } from './logger';
 
-export function App({examples = Examples(), enabled: focusEnabled = true}) {
+function isMobileDevice() {
+  return /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+}
+
+function hasHardwareKeyboard() {
+  return !window.matchMedia('(pointer: coarse)').matches && navigator.maxTouchPoints === 0;
+}
+
+function shouldAutoFocusInput() {
+  return hasHardwareKeyboard() || !isMobileDevice();
+}
+
+export function App({examples = Examples()}) {
     const exerciseStatus = ExerciseStatus(examples);
     const viewport = Viewport(false);
     let pwaUpdateCheckEvery = 1 * 60 * 1000; // 1 minute
@@ -27,6 +41,12 @@ export function App({examples = Examples(), enabled: focusEnabled = true}) {
     useEffect(() => {
         exerciseStatusManager.setKeyboard('');
     }, [exerciseStatusManager.setKeyboard]);
+
+    useEffect(() => {
+        if ("virtualKeyboard" in navigator) {
+            navigator.virtualKeyboard.overlaysContent = true;
+        }
+    }, []);
 
     useEffect(() => {
         document.documentElement.style.setProperty('--app-height', `${viewport.sizes.visualViewport.height}px`);
@@ -41,12 +61,27 @@ export function App({examples = Examples(), enabled: focusEnabled = true}) {
         );
     }
 
+    const keyboardCaptureRef = useRef(null);
+    const shouldAutoFocus = shouldAutoFocusInput();
+    const logger = getLogger('App');
+
+    // Handler for focusing input on non-hardware keyboard devices when clicking main-container
+    const handleMainContainerClick = (e) => {
+        logger.debug('handleMainContainerClick', e);
+        if (!shouldAutoFocus && keyboardCaptureRef.current) {
+            keyboardCaptureRef.current.focusInput({ preventScroll: true });
+        }
+        if (exerciseStatusManager.onClick) {
+            exerciseStatusManager.onClick(e);
+        }
+    };
+
     return (
         <>
             {addVersionInformation()}
             <div className='app-container'>
                 {viewport.ViewPortStatsComponent()}
-                <div className='header'>
+                <div className='header allowClick'>
                     <div className="header-bar">
                         <SessionMenu examples={examples} onSelectSession={exerciseStatusManager.selectSession}/>
                         <SettingsMenu/>
@@ -57,7 +92,7 @@ export function App({examples = Examples(), enabled: focusEnabled = true}) {
                     </div>
                     <Title session={exerciseStatus}/>
                 </div>
-                <div className='main-container'>
+                <div className='main-container' onClick={handleMainContainerClick}>
                     <Sentence
                         text={exerciseStatus.example}
                         highlight={exerciseStatusManager.keyboard}
@@ -65,13 +100,14 @@ export function App({examples = Examples(), enabled: focusEnabled = true}) {
                         wordSuccessFullyGuessed={exerciseStatusManager.wordSuccessfullyGuessed}
                     />
                     <KeyboardCaptureInput
+                        ref={keyboardCaptureRef}
                         value={exerciseStatusManager.keyboard}
                         onChange={exerciseStatusManager.onChange}
                         onKeyDown={exerciseStatusManager.onKeyDown}
                         maxLength={exerciseStatus.example.length}
-                        enabled={focusEnabled}
-                        allowFocusLossSelectors={['.theme-switcher', '.menu', '.menu-panel']}
-                        className={'text-container float-bottom-right'}
+                        enabled={shouldAutoFocus}
+                        autoFocus={shouldAutoFocus}
+                        allowFocusLossSelectors={['.theme-switcher', '.menu', '.menu-panel', '.allowClick']}
                     />
                 </div>
                 <Progression status={exerciseStatus}/>

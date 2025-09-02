@@ -11,7 +11,7 @@ const Icon = ({children, label}) => (
 
 export function NavigationBar({exerciseStatusManager, exerciseStatus}) {
     return (
-        <nav className={styles.navigationBar}>
+        <nav className={styles.navigationBar + " allowClick"}>
             <button
                 type="button"
                 onClick={exerciseStatusManager.prevSession}

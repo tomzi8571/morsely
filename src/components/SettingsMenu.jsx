@@ -31,6 +31,7 @@ export function SettingsMenu({onSettingSelect, show = "icon"}) {
             summaryIcon={<SettingsIcon/>}
             defaultOpen={false}
             show={show}
+            refocusOnClose={false}
             dropUp={true} // Render menu above trigger when in footer
         >
             {settings.map((item, idx) => (

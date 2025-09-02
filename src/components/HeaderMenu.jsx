@@ -10,7 +10,7 @@ export function HeaderMenu({
                                summaryProps = {},
                                panelProps = {},
                                closeOnSelect = true, // Close when an item is selected
-                               refocusOnClose = true, // Automatically refocus a target on close
+                               refocusOnClose = false, // Automatically refocus a target on close
                                refocusSelector = '.text-container', // Selector to focus on close (matches your hidden input)
                                summaryIcon,          // Custom icon node provided by parent
                                summaryAriaLabel,     // Optional accessible label override
@@ -96,13 +96,13 @@ export function HeaderMenu({
     return (
         <details
             ref={detailsRef}
-            className={styles.menu}
+            className={styles.menu + ' allowClick'}
             open={open}
             onToggle={handleToggle}
             onKeyDown={onKeyDown}
         >
             <summary
-                className={styles.menuHeader}
+                className={styles.menuHeader } // Add allowClick class
                 ref={summaryRef}
                 role="button"
                 aria-expanded={open}
@@ -116,7 +116,7 @@ export function HeaderMenu({
             </summary>
             <nav
                 id={panelId}
-                className={styles.menuPanel}
+                className={styles.menuPanel} // Add allowClick class
                 onClick={onPanelClick}
                 {...panelProps}
             >

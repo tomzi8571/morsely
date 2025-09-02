@@ -103,7 +103,7 @@ export async function generateManifest(options = {}) {
         name: "Morsely - FUNtastic morse coding",
         short_name: "Morsely",
         start_url: ".",
-        display: "standalone",
+        display: "standalone", // makes sure, that there is no browser bar on top or menu buttons
         background_color: "#5B7CFF",
         theme_color: "#5B7CFF",
         icons

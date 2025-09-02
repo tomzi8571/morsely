@@ -16,7 +16,14 @@ created new components for both
 - synced manifest.json and manifest.webmanifest for the PWA by
 letting it generate by the vite.config.js
 - added a serviceworker to reload  the app when a new version is deployed
-
+- fixed layout issue to make it fullscreen on mobile devices
+and compute the correct height for the footer using 'keyboard-inset-height'
+- added \<input> is automatically focused on desktop application, where
+a keyboard is available and on mobile devices you need to touch the 
+the main component to open the keyboard. 
+- Prevent to open the keyboard on mobile devices when the nav or menu
+is clicked.
+- added logging framework
 
 ## [0.1.0] 
 ### Added

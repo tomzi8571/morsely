@@ -1,7 +1,9 @@
 import {ExamplesPropType} from "./Examples.jsx";
 import {useEffect, useState} from "react";
+import { getLogger } from '../logger';
 
 export function ExerciseStatus(examples) {
+    const logger = getLogger('ExcerciseStatus');
     const [status, setStatus] = useState({session: 0, progression: 0, exercise: 0});
     // Normalize to an array for indexing logic
     const sessions = Array.isArray(examples) ? examples : Object.values(examples || {});
@@ -14,9 +16,9 @@ export function ExerciseStatus(examples) {
         let initialStatus = null
         try {
             initialStatus = JSON.parse(localStorage.getItem('exerciseStatus'))
-            // console.log("Loading status from local storage", initialStatus);
+            logger.debug("Loading status from local storage", initialStatus);
         } catch (e) {
-            console.error("Error parsing local storage", e);
+            logger.error("Error parsing local storage", e);
         }
         if (initialStatus === null) {
             initialStatus = {session: 0, progression: 0, exercise: 0};
@@ -26,7 +28,7 @@ export function ExerciseStatus(examples) {
 
     // Update the local storage whenever the status changes
     useEffect(() => {
-        // console.log("Saving status to local storage", status);
+        logger.debug("Saving status to local storage", status);
         localStorage.setItem('exerciseStatus', JSON.stringify(status));
     }, [status]);
 
