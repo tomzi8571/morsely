@@ -9,12 +9,20 @@ const Icon = ({children, label}) => (
   </span>
 );
 
-export function NavigationBar({exerciseStatusManager, exerciseStatus}) {
+export function NavigationBar({exerciseStatusManager, exerciseStatus, refocusAfterClick}) {
+    // Helper to wrap button actions and refocus input if needed
+    const handleNavClick = (action) => (e) => {
+        action(e);
+        if (refocusAfterClick) {
+            const input = document.querySelector('.text-container');
+            input?.focus({ preventScroll: true });
+        }
+    };
     return (
         <nav className={styles.navigationBar + " allowClick"}>
             <button
                 type="button"
-                onClick={exerciseStatusManager.prevSession}
+                onClick={handleNavClick(exerciseStatusManager.prevSession)}
                 disabled={exerciseStatus.session.isFirst}
                 aria-label="Previous Session"
                 className={styles.navBtn}
@@ -28,7 +36,7 @@ export function NavigationBar({exerciseStatusManager, exerciseStatus}) {
             </button>
             <button
                 type="button"
-                onClick={exerciseStatusManager.prevProgression}
+                onClick={handleNavClick(exerciseStatusManager.prevProgression)}
                 disabled={exerciseStatus.progression.isFirst && exerciseStatus.session.isFirst}
                 aria-label="Previous Progression"
                 className={styles.navBtn}
@@ -41,7 +49,7 @@ export function NavigationBar({exerciseStatusManager, exerciseStatus}) {
             </button>
             <button
                 type="button"
-                onClick={exerciseStatusManager.prevExercise}
+                onClick={handleNavClick(exerciseStatusManager.prevExercise)}
                 disabled={exerciseStatus.exercise.isFirst && exerciseStatus.progression.isFirst && exerciseStatus.session.isFirst}
                 aria-label="Previous Exercise"
                 className={styles.navBtn}
@@ -54,7 +62,7 @@ export function NavigationBar({exerciseStatusManager, exerciseStatus}) {
             </button>
             <button
                 type="button"
-                onClick={exerciseStatusManager.nextExercise}
+                onClick={handleNavClick(exerciseStatusManager.nextExercise)}
                 disabled={exerciseStatus.exercise.isLast && exerciseStatus.progression.isLast && exerciseStatus.session.isLast}
                 aria-label="Next Exercise"
                 className={styles.navBtn}
@@ -67,7 +75,7 @@ export function NavigationBar({exerciseStatusManager, exerciseStatus}) {
             </button>
             <button
                 type="button"
-                onClick={exerciseStatusManager.nextProgression}
+                onClick={handleNavClick(exerciseStatusManager.nextProgression)}
                 disabled={exerciseStatus.progression.isLast && exerciseStatus.session.isLast}
                 aria-label="Next Progression"
                 className={styles.navBtn}
@@ -80,7 +88,7 @@ export function NavigationBar({exerciseStatusManager, exerciseStatus}) {
             </button>
             <button
                 type="button"
-                onClick={exerciseStatusManager.nextSession}
+                onClick={handleNavClick(exerciseStatusManager.nextSession)}
                 disabled={exerciseStatus.session.isLast}
                 aria-label="Next Session"
                 className={styles.navBtn}
@@ -100,5 +108,3 @@ NavigationBar.propTypes = {
     exerciseStatusManager: PropTypes.object.isRequired,
     exerciseStatus: PropTypes.object.isRequired,
 };
-
-

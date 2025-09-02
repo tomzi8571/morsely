@@ -2,7 +2,7 @@ import {HeaderMenu} from "./HeaderMenu.jsx";
 import {ThemeMenu} from "./ThemeMenu.jsx";
 import PropTypes from 'prop-types';
 
-export function SettingsMenu({onSettingSelect, show = "icon"}) {
+export function SettingsMenu({onSettingSelect, show = "icon", refocusOnClose = false}) {
     const getVersion = () => `Version: ${import.meta.env.VITE_APP_VERSION || ''}`;
 
     const settings = [
@@ -31,7 +31,7 @@ export function SettingsMenu({onSettingSelect, show = "icon"}) {
             summaryIcon={<SettingsIcon/>}
             defaultOpen={false}
             show={show}
-            refocusOnClose={false}
+            refocusOnClose={refocusOnClose}
             dropUp={true} // Render menu above trigger when in footer
         >
             {settings.map((item, idx) => (

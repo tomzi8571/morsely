@@ -24,6 +24,9 @@ the main component to open the keyboard.
 - Prevent to open the keyboard on mobile devices when the nav or menu
 is clicked.
 - added logging framework
+- fixed issue when menu is closed or navbar icons are clicked, the input element
+wasn't refocused on the desktop ap any more.
+- also added dynamic letter specing between the morse code letters
 
 ## [0.1.0] 
 ### Added

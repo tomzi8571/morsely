@@ -5,7 +5,7 @@ export function Sentence({text, highlight, reveal = false, wordSuccessFullyGuess
 
     let highlightKey = '';
 
-    const guessedStyle = () => {
+    const wordSuccessfullyGuessedStyle = () => {
         const base = {
             transition: 'color 300ms ease, text-shadow 300ms ease, transform 300ms ease',
             transform: 'scale(1)',
@@ -24,12 +24,18 @@ export function Sentence({text, highlight, reveal = false, wordSuccessFullyGuess
 
     return (
         <div className='sentence'>
-            <div style={guessedStyle()}>
+            <div className='sentence-letters' style={wordSuccessfullyGuessedStyle()}>
                 {Array.from(text).map((letter, idx) => {
                     highlightKey = highlightKey + letter;
                     return (
-                        <Letter letter={letter} alphabet={Alphabet()} highlight={highlight} highlightKey={highlightKey}
-                                reveal={reveal}/>)
+                        <Letter
+                            key={idx}
+                            letter={letter}
+                            alphabet={Alphabet()}
+                            highlight={highlight}
+                            highlightKey={highlightKey}
+                            reveal={reveal}
+                        />)
                 })}
             </div>
         </div>

@@ -24,11 +24,11 @@ export function Letter({letter, alphabet, highlightKey, highlight, reveal = fals
         logger.debug({progression: letter, highlight, genHighlightKey, currentHighlightKey, highlightLetter});
 
     return (
-        <span>
+        <span className='letter'>
             {String(letter).trim() === '' ? <span className="word-seperator"/> : ''}
-            <span className='letter' style={{color: highlightLetter ? 'lightgreen' : 'white'}}>
-                    <span className='morse'>{match ? match.morse : ''}</span>
-                    <span className='reveal'>{reveal || highlightLetter ? letter : ''}</span>
+            <span style={{color: highlightLetter ? 'lightgreen' : 'white'}}>
+                <span className='morse'>{match ? match.morse : ''}</span>
+                <span className='reveal'>{reveal || highlightLetter ? letter : ''}</span>
             </span>
         </span>
     );

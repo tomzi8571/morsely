@@ -1,5 +1,4 @@
-import React, { useRef } from 'react';
-import {useEffect} from 'react'
+import React, {useEffect, useRef} from 'react';
 import './App.css'
 
 import {Sentence} from "./components/Sentence.jsx";
@@ -16,19 +15,19 @@ import {SettingsMenu} from "./components/SettingsMenu.jsx";
 import {StreakIcon} from "./components/StreakIcon.jsx";
 import {HighscoreIcon} from "./components/HighscoreIcon.jsx";
 import {NavigationBar} from './components/NavigationBar.jsx';
-import { useServiceWorkerUpdater } from './components/useServiceWorkerUpdater.jsx';
-import { getLogger } from './logger';
+import {useServiceWorkerUpdater} from './components/useServiceWorkerUpdater.jsx';
+import {getLogger} from './logger';
 
 function isMobileDevice() {
-  return /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
+    return /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
 }
 
 function hasHardwareKeyboard() {
-  return !window.matchMedia('(pointer: coarse)').matches && navigator.maxTouchPoints === 0;
+    return !window.matchMedia('(pointer: coarse)').matches && navigator.maxTouchPoints === 0;
 }
 
 function shouldAutoFocusInput() {
-  return hasHardwareKeyboard() || !isMobileDevice();
+    return hasHardwareKeyboard() || !isMobileDevice();
 }
 
 export function App({examples = Examples()}) {
@@ -51,7 +50,7 @@ export function App({examples = Examples()}) {
     useEffect(() => {
         document.documentElement.style.setProperty('--app-height', `${viewport.sizes.visualViewport.height}px`);
     }, [viewport.sizes.visualViewport.height]);
-    useServiceWorkerUpdater({ interval: pwaUpdateCheckEvery }); // Checks for updates every minute
+    useServiceWorkerUpdater({interval: pwaUpdateCheckEvery}); // Checks for updates every minute
 
     function addVersionInformation() {
         let version = `Version: ${import.meta.env.VITE_APP_VERSION || ''} Commit: ${import.meta.env.VITE_APP_COMMIT || ''} Built: ${import.meta.env.VITE_APP_BUILDTIME || ''}`;
@@ -69,7 +68,7 @@ export function App({examples = Examples()}) {
     const handleMainContainerClick = (e) => {
         logger.debug('handleMainContainerClick', e);
         if (!shouldAutoFocus && keyboardCaptureRef.current) {
-            keyboardCaptureRef.current.focusInput({ preventScroll: true });
+            keyboardCaptureRef.current.focusInput({preventScroll: true});
         }
         if (exerciseStatusManager.onClick) {
             exerciseStatusManager.onClick(e);
@@ -83,8 +82,10 @@ export function App({examples = Examples()}) {
                 {viewport.ViewPortStatsComponent()}
                 <div className='header allowClick'>
                     <div className="header-bar">
-                        <SessionMenu examples={examples} onSelectSession={exerciseStatusManager.selectSession}/>
-                        <SettingsMenu/>
+                        <SessionMenu examples={examples}
+                                     onSelectSession={exerciseStatusManager.selectSession}
+                                     refocusOnClose={shouldAutoFocus}/>
+                        <SettingsMenu refocusOnClose={shouldAutoFocus}/>
                         <span className="header-bar-icons">
                             <StreakIcon value={exerciseStatusManager.statistics.streak}/>
                             <HighscoreIcon value={exerciseStatusManager.statistics.high}/>
@@ -115,6 +116,7 @@ export function App({examples = Examples()}) {
                     <NavigationBar
                         exerciseStatusManager={exerciseStatusManager}
                         exerciseStatus={exerciseStatus}
+                        refocusAfterClick={shouldAutoFocus}
                     />
                 </div>
             </div>

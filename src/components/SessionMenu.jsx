@@ -1,7 +1,7 @@
 import {HeaderMenu} from "./HeaderMenu.jsx";
 import PropTypes from 'prop-types';
 
-export function SessionMenu({examples, onSelectSession, show = "icon"}) {
+export function SessionMenu({examples, onSelectSession, show = "icon", refocusOnClose = false}) {
     function getOnClick(idx) {
         return () => onSelectSession(idx);
     }
@@ -16,6 +16,7 @@ export function SessionMenu({examples, onSelectSession, show = "icon"}) {
         summaryLabel="Menu"
         summaryAriaLabel="Menu"
         summaryIcon={<MenuIcon/>}
+        refocusOnClose={refocusOnClose}
         show={show}
     >
         {Object.entries(examples).map((session, idx) => (
