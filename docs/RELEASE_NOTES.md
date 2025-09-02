@@ -14,7 +14,7 @@ created new components for both
 - moved for some React components the css into the .module.css files
 - added new documentation for AI-prompts used during development
 - synced manifest.json and manifest.webmanifest for the PWA by
-letting it generate by the vite.config.js
+letting it generate by[RELEASE_NOTES.md](RELEASE_NOTES.md) the vite.config.js
 - added a serviceworker to reload  the app when a new version is deployed
 - fixed layout issue to make it fullscreen on mobile devices
 and compute the correct height for the footer using 'keyboard-inset-height'
@@ -27,6 +27,7 @@ is clicked.
 - fixed issue when menu is closed or navbar icons are clicked, the input element
 wasn't refocused on the desktop ap any more.
 - also added dynamic letter specing between the morse code letters
+- added morsekey_OS.svg - just for fun :)
 
 ## [0.1.0] 
 ### Added
