@@ -17,7 +17,7 @@ import {HighscoreIcon} from "./components/HighscoreIcon.jsx";
 import {NavigationBar} from './components/NavigationBar.jsx';
 import {useServiceWorkerUpdater} from './components/useServiceWorkerUpdater.jsx';
 import {getLogger} from './logger';
-import MorseKeySOS from './components/MorseKeySOS';
+import MorseKeyIcon from './components/MorseKeySOS';
 
 function isMobileDevice() {
     return /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
@@ -76,10 +76,10 @@ export function App({examples = Examples()}) {
         }
     };
 
-    // Add a handler to trigger MorseKeySOS animation
+    // Add a handler to trigger MorseKeyIcon animation
     const handleMorseKeySOSClick = () => {
         // You can add any custom logic here if needed
-        console.log('MorseKeySOS icon clicked! Animation triggered.');
+        console.log('MorseKeyIcon icon clicked! Animation triggered.');
     };
 
     return (
@@ -96,7 +96,7 @@ export function App({examples = Examples()}) {
                         <span className="header-bar-icons">
                             <StreakIcon value={exerciseStatusManager.statistics.streak}/>
                             <HighscoreIcon value={exerciseStatusManager.statistics.high}/>
-                            <MorseKeySOS
+                            <MorseKeyIcon
                                 width={32}
                                 height={18}
                                 animationSpeed="2s"
