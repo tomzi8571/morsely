@@ -1,5 +1,15 @@
 # Fun with morse code
-The story behind this project...
+## Getting Started
+As of now, the project has been deployed to Netlify. You can find it here: https://morsely.netlify.app/
+
+## How it works
+Well, you simple start by learning one letter at a time. First we start with 'e'. You see the morse code for e - '.'. You type 'e'. Well done! Next you see '-', you type 't'. Now you get a couple of words with only 't' and 'e'. Next 'i'. Letters are added and in every progression, you get words and sentences with only letters you just learned. 
+
+For motivation you can get on your personal highscore. It measures your longest streak you have so far. 
+
+
+
+## The story behind this project...
 
 I just started learning react in Aug 2025 with
 this [udemy course](https://www.udemy.com/course/spring-boot-using-intellij-build-a-real-world-project/).
@@ -27,9 +37,6 @@ It took me a lot of frustrating routes, trying different height properties, like
 to calculate the viewport... but hopefully I
 The UI was not good, but I was learning 😉 and it was mostly about the functionality, back then.
 I hope I figured it out, today, as you read this right now 😉
-
-## Getting Started
-As of now, the project has been deployed to Netlify. You can find it here: https://morsely.netlify.app/
 
 ## Deployment to Netlify
 
