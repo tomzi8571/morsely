@@ -91,7 +91,6 @@ export function App({examples = Examples()}) {
 // Handler for focusing input on non-hardware keyboard devices when clicking main-container
     const handleMainContainerClick = (e) => {
         logger.debug('handleMainContainerClick()', e);
-        // refocusKeyboardIfNecessary();
         forceFocusKeyboard();
         if (exerciseStatusManager.onClick) {
             exerciseStatusManager.onClick(e);
