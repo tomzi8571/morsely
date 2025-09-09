@@ -64,5 +64,20 @@ export function Alphabet() {
         {text: ' ', morse: '/', type: 'punctuation'}
     ];
 
-    return {letters}
+    const lookup = letters.reduce((morse, letter) => {
+        morse[letter.text] = letter.morse;
+        morse[letter.text.toUpperCase()] = letter.morse;
+        return morse;
+    }, {});
+    const sentenceToMorse = (alphabetSentence = '', {skipUnknown = false} = {}) => {
+        if (!alphabetSentence) return '';
+        const morseSentence = [];
+        for (const letter of alphabetSentence) {
+            const code = lookup[letter] || lookup[letter.toUpperCase()];
+            if (code) morseSentence.push(code); else if (!skipUnknown) morseSentence.push('?');
+        }
+        return morseSentence.join(' ');
+    };
+
+    return {letters, sentenceToMorse}
 }

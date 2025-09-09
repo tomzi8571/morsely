@@ -241,7 +241,16 @@ body {
 .header .title {
     margin: 0 auto;
     width: min(1100px, 100%);
-    padding: var(--space-4) var(--space-5);
+    padding: var(--space-4) 0;
+}
+
+.title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: left;
+    gap: 0;
+    padding: 0 0 0 var(--space-5);
 }
 
 .title h1 {
@@ -259,9 +268,23 @@ body {
 }
 
 .main-container {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: var(--space-7) var(--space-5);
+}
+
+.main-container h2 {
+    font-size: clamp(var(--fs-xs), var(--fs-xs) + 1.2vw, var(--fs-2xl));
+    font-weight: lighter;
+    letter-spacing: -0.01em;
+    align-self: flex-start;
+    margin-bottom: 0;
+    padding-left: var(--space-1);
+}
+.main-container h2 .practiceLetter {
+    font-weight: 500;
 }
 
 .sentence {

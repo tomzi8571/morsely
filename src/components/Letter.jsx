@@ -7,12 +7,16 @@ export function Letter({letter, alphabet, highlightKey, highlight, reveal = fals
     const [match, setMatch] = useState();
     const [genHighlightKey, setGenHighlightKey] = useState();
 
+    function getMorseCode(letters) {
+        return letters.find(
+            ({text}) => text.toUpperCase() === String(letter).toUpperCase()
+        );
+    }
+
     useEffect(() => {
         if (!letter) return null;
         const {letters} = alphabet;
-        const matcher = letters.find(
-            ({text}) => text.toUpperCase() === String(letter).toUpperCase()
-        );
+        const matcher = getMorseCode(letters);
         setMatch(() => matcher);
         let genKey = String(highlightKey).replace(/ /g, '-').toLowerCase();
         setGenHighlightKey(() => genKey)

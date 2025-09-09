@@ -1,6 +1,7 @@
 import {useCallback, useEffect, useState} from "react";
 import PropTypes from "prop-types";
 import { getLogger } from '../logger';
+import {ExerciseStatus} from "./ExcerciseStatus.jsx";
 
 export function ExerciseStatusManager(exerciseStatus, viewport) {
     const logger = getLogger('ExerciseStatusManager');
@@ -157,6 +158,6 @@ export function ExerciseStatusManager(exerciseStatus, viewport) {
 }
 
 ExerciseStatusManager.propTypes = {
-    exerciseStatus: PropTypes.object.isRequired,
+    exerciseStatus: PropTypes.objectOf(ExerciseStatus),
     viewport: PropTypes.object
 };

@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="480" height="260" viewBox="0 0 240 130">
+    <title>Comic Morse Telegraph Key — Single Click Animation</title>
+    <!-- Single click animation:
+         Adjust duration by changing the dur attribute on the <animate>/<animateTransform> elements
+         (e.g. via React after importing as component). Trigger by calling beginElement() on each animate node.
+         Sequence: rest (0) -> press (50%) -> rest (100%). -->
+    <defs>
+        <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+            <feOffset dx="0" dy="2" result="offset"/>
+            <feMerge>
+                <feMergeNode in="offset"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+        <linearGradient id="baseGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#6EE6FF"/>
+            <stop offset="100%" stop-color="#35C9F2"/>
+        </linearGradient>
+        <linearGradient id="postGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#B58CFF"/>
+            <stop offset="100%" stop-color="#8A62FF"/>
+        </linearGradient>
+        <linearGradient id="leverGrad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#FFE36E"/>
+            <stop offset="100%" stop-color="#FFD23C"/>
+        </linearGradient>
+        <radialGradient id="knobGrad" cx="35%" cy="30%" r="70%">
+            <stop offset="0%" stop-color="#FF6B6B"/>
+            <stop offset="100%" stop-color="#E43D3D"/>
+        </radialGradient>
+    </defs>
+
+    <g stroke="#161616" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <ellipse cx="120" cy="112" rx="85" ry="8" fill="#000" opacity="0.12" stroke="none"/>
+        <rect x="15" y="76" width="210" height="36" rx="18" fill="url(#baseGrad)" filter="url(#softShadow)"/>
+        <g fill="#8A62FF">
+            <ellipse cx="40" cy="114" rx="14" ry="6" stroke="#161616"/>
+            <ellipse cx="200" cy="114" rx="14" ry="6" stroke="#161616"/>
+        </g>
+        <g>
+            <rect x="56" y="64" width="28" height="20" rx="6" fill="url(#postGrad)"/>
+            <circle cx="70" cy="64" r="6" fill="#8A62FF"/>
+        </g>
+        <g>
+            <rect x="146" y="68" width="16" height="16" rx="6" fill="#9BDE7E"/>
+            <circle cx="154" cy="68" r="5" fill="#6CC96B"/>
+        </g>
+        <path d="M 200 90 C 208 88, 214 94, 220 90" stroke="#4A58F2" stroke-width="4" fill="none"/>
+        <circle id="tapLight" cx="168" cy="66" r="5" fill="#FFD23C" stroke="#161616" opacity="0"/>
+        <g id="lever" transform="rotate(-18 70 65)">
+            <path d="M 70 62 L 138 58 C 142 58, 146 61, 147 65 C 147 69, 143 72, 139 72 L 70 68 Z"
+                  fill="url(#leverGrad)"/>
+            <g id="knob">
+                <circle cx="146" cy="65" r="12" fill="url(#knobGrad)"/>
+                <circle cx="142" cy="61" r="4" fill="#FFFFFF" opacity="0.55" stroke="none"/>
+            </g>
+            <ellipse cx="154" cy="76" rx="9" ry="4" fill="#444" opacity="0.25" stroke="none"/>
+        </g>
+        <g id="spark" opacity="0">
+            <path d="M172 58 l3 5 6 1 -5 3 1 6 -5 -3 -5 3 1 -6 -5 -3 6 -1z"
+                  fill="#FFE36E" stroke="#161616"/>
+        </g>
+    </g>
+
+    <!-- Single press animations (lever down then up once) -->
+    <animateTransform
+            href="#lever"
+            attributeName="transform"
+            type="rotate"
+            dur="0.3s"
+            repeatCount="1"
+            begin="0"
+            keyTimes="0;0.05;0.95;1"
+            values="-18 70 65; 0 70 65; 0 70 65; -18 70 65;"/>
+
+    <animate
+            href="#tapLight"
+            attributeName="opacity"
+            dur="0.6s"
+            repeatCount="1"
+            begin="indefinite"
+            keyTimes="0;0.5;1"
+            values="0;1;0"/>
+
+    <animate
+            href="#spark"
+            attributeName="opacity"
+            dur="0.1s"
+            repeatCount="1"
+            begin="0.1"
+            keyTimes="0;0.5;1"
+            values="0;1;0"/>
+
+    <animateTransform
+            href="#knob"
+            attributeName="transform"
+            type="translate"
+            dur="0.6s"
+            repeatCount="1"
+            begin="indefinite"
+            keyTimes="0;0.5;1"
+            values="0 0;0 1;0 0"/>
+</svg>

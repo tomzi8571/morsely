@@ -1,13 +1,13 @@
 import {ExamplesPropType} from "./Examples.jsx";
 import {useEffect, useState} from "react";
-import { getLogger } from '../logger';
+import {getLogger} from '../logger';
 
 export function ExerciseStatus(examples) {
     const logger = getLogger('ExcerciseStatus');
     const [status, setStatus] = useState({session: 0, progression: 0, exercise: 0});
     // Normalize to an array for indexing logic
     const sessions = Array.isArray(examples) ? examples : Object.values(examples || {});
-    const progressions =  sessions[status?.session]?.progressions || [];
+    const progressions = sessions[status?.session]?.progressions || [];
     const currentProgression = progressions[status?.progression] || {words: []};
     const currentWords = currentProgression.words || [];
 
@@ -129,28 +129,33 @@ export function ExerciseStatus(examples) {
         return newStatus;
     };
 
-    const sessionStatus = () => {
-        return {
-            index: status.session,
-            size: sessions.length,
-            isFirst: status.session === 0,
-            isLast: sessions.length === 0 ? true : status.session === sessions.length - 1
-        }
-    };
+    const sessionStatus = () => ({
+        index: status.session,
+        size: sessions.length,
+        isFirst: status.session === 0,
+        isLast: sessions.length === 0 ? true : status.session === sessions.length - 1,
+        percent: sessions.length > 0 ? Math.round(status.session / sessions.length * 100) : 0
+    });
 
     const progressionStatus = () => ({
         index: status.progression,
         size: progressions.length,
         isLast: progressions.length === 0 ? true : status.progression === progressions.length - 1,
-        isFirst: status.progression === 0
+        isFirst: status.progression === 0,
+        percent: progressions.length > 0 ? Math.round(status.progression / progressions.length * 100) : 0,
     });
 
-    const exerciseStatus = () => ({
-        index: status.exercise,
-        size: currentWords.length,
-        isLast: currentWords.length === 0 ? true : status.exercise === currentWords.length - 1,
-        isFirst: status.exercise === 0
-    });
+    const exerciseStatus = () => {
+        let newVar = {
+            index: status.exercise,
+            size: currentWords.length,
+            isLast: currentWords.length === 0 ? true : status.exercise === currentWords.length - 1,
+            isFirst: status.exercise === 0,
+            percent: currentWords.length > 0 ? Math.round(status.exercise / currentWords.length * 100) : 0
+        };
+        logger.debug("exerciseStatus", newVar);
+        return newVar;
+    };
 
     const selectSession = (session) => {
         setStatus({session: session, progression: 0, exercise: 0});

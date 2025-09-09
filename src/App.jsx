@@ -17,7 +17,11 @@ import {HighscoreIcon} from "./components/HighscoreIcon.jsx";
 import {NavigationBar} from './components/NavigationBar.jsx';
 import {useServiceWorkerUpdater} from './components/useServiceWorkerUpdater.jsx';
 import {getLogger} from './logger';
-import MorseKeyIcon from './components/MorseKeySOS';
+import MorseKeyIcon from './components/MorseKeySVG.jsx';
+import {Progress} from "./components/Progress.jsx";
+
+const logger = getLogger('App');
+logger.setLevel('info');
 
 function isMobileDevice() {
     return /Mobi|Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
@@ -34,7 +38,9 @@ function shouldAutoFocusInput() {
 export function App({examples = Examples()}) {
     const exerciseStatus = ExerciseStatus(examples);
     const viewport = Viewport(false);
-    let pwaUpdateCheckEvery = 1 * 60 * 1000; // 1 minute
+    const pwaUpdateCheckEvery = 12 * 60 * 60 * 1000; // 12 hours in milliseconds
+    const keyboardCaptureRef = useRef(null);
+    const shouldAutoFocus = shouldAutoFocusInput();
 
     const exerciseStatusManager = ExerciseStatusManager(exerciseStatus, viewport);
 
@@ -51,6 +57,11 @@ export function App({examples = Examples()}) {
     useEffect(() => {
         document.documentElement.style.setProperty('--app-height', `${viewport.sizes.visualViewport.height}px`);
     }, [viewport.sizes.visualViewport.height]);
+
+    useEffect(() => {
+        logger.debug("Word guessed", exerciseStatusManager.keyboard)
+    }, [exerciseStatusManager.keyboard]);
+
     useServiceWorkerUpdater({interval: pwaUpdateCheckEvery}); // Checks for updates every minute
 
     function addVersionInformation() {
@@ -61,16 +72,21 @@ export function App({examples = Examples()}) {
         );
     }
 
-    const keyboardCaptureRef = useRef(null);
-    const shouldAutoFocus = shouldAutoFocusInput();
-    const logger = getLogger('App');
-
-    // Handler for focusing input on non-hardware keyboard devices when clicking main-container
-    const handleMainContainerClick = (e) => {
-        logger.debug('handleMainContainerClick', e);
-        if (!shouldAutoFocus && keyboardCaptureRef.current) {
+    function refocusKeyboardIfNecessary() {
+        logger.debug('refocusKeyboardIfNecessary() ', {
+            shouldAutoFocus: shouldAutoFocus,
+            keyboardCaptureRef: keyboardCaptureRef.current
+        });
+        if (shouldAutoFocus && keyboardCaptureRef.current) {
+            logger.debug('refocusKeyboardIfNecessary(): refocusing to <input> element');
             keyboardCaptureRef.current.focusInput({preventScroll: true});
         }
+    }
+
+// Handler for focusing input on non-hardware keyboard devices when clicking main-container
+    const handleMainContainerClick = (e) => {
+        logger.debug('handleMainContainerClick()', e);
+        refocusKeyboardIfNecessary();
         if (exerciseStatusManager.onClick) {
             exerciseStatusManager.onClick(e);
         }
@@ -79,7 +95,8 @@ export function App({examples = Examples()}) {
     // Add a handler to trigger MorseKeyIcon animation
     const handleMorseKeySOSClick = () => {
         // You can add any custom logic here if needed
-        console.log('MorseKeyIcon icon clicked! Animation triggered.');
+        logger.debug('MorseKeyIcon icon clicked! Animation triggered.');
+        refocusKeyboardIfNecessary();
     };
 
     return (
@@ -99,17 +116,22 @@ export function App({examples = Examples()}) {
                             <MorseKeyIcon
                                 width={32}
                                 height={18}
-                                animationSpeed="2s"
-                                animationRepeatCount={1}
                                 animationEnabled={true}
-                                style={{marginLeft: 8, marginRight: 8, verticalAlign: 'middle'}}
+                                autoStart={true}
+                                sentenceToAnimate={exerciseStatusManager.keyboard.at(-1)}
+                                style={{marginLeft: 8, marginRight: 8, verticalAlign: 'middle', cursor: 'pointer'}}
                                 onClick={handleMorseKeySOSClick}
                             />
                         </span>
                     </div>
-                    <Title session={exerciseStatus}/>
+                    <div className="title-container">
+                        <Title session={exerciseStatus}/>
+                        <Progress value={exerciseStatus.exercise}/>
+                    </div>
                 </div>
                 <div className='main-container' onClick={handleMainContainerClick}>
+                    <h2 className="progression">Lets practise letter
+                        <span className="practiceLetter">{exerciseStatus.introduced}</span></h2>
                     <Sentence
                         text={exerciseStatus.example}
                         highlight={exerciseStatusManager.keyboard}

@@ -9,7 +9,6 @@ export function Progression({status}) {
     }
 
     return <div className='progression'>
-        <h2>Lets practise letter {status.introduced}.&nbsp;</h2>
         <h2>{lessons()}</h2>
     </div>;
 }
