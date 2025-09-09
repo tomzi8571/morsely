@@ -154,6 +154,7 @@ const MorseKeySVG = ({
     return (
         <span
             style={style}
+            className="allowClick"
             onClick={handleClick}
             tabIndex={0}
             role="button"

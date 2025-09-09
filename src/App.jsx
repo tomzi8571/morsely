@@ -72,6 +72,11 @@ export function App({examples = Examples()}) {
         );
     }
 
+    function forceFocusKeyboard() {
+        logger.debug('forceFocusKeyboard() ', {})
+        keyboardCaptureRef.current.focusInput({preventScroll: true});
+    }
+
     function refocusKeyboardIfNecessary() {
         logger.debug('refocusKeyboardIfNecessary() ', {
             shouldAutoFocus: shouldAutoFocus,
@@ -79,14 +84,15 @@ export function App({examples = Examples()}) {
         });
         if (shouldAutoFocus && keyboardCaptureRef.current) {
             logger.debug('refocusKeyboardIfNecessary(): refocusing to <input> element');
-            keyboardCaptureRef.current.focusInput({preventScroll: true});
+            forceFocusKeyboard();
         }
     }
 
 // Handler for focusing input on non-hardware keyboard devices when clicking main-container
     const handleMainContainerClick = (e) => {
         logger.debug('handleMainContainerClick()', e);
-        refocusKeyboardIfNecessary();
+        // refocusKeyboardIfNecessary();
+        forceFocusKeyboard();
         if (exerciseStatusManager.onClick) {
             exerciseStatusManager.onClick(e);
         }
