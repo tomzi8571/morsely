@@ -135,7 +135,7 @@ I hope I figured it out, today, as you read this right now 😉
 ### Deploy snapshot to netlify
    Snapshots are deployed to  https://<someSnapshotVersion>--morsely.netlify.app
 
-   To do this, just run
+   To do this, just run 
 
    `npm run deploy:netlify:preview`
 
