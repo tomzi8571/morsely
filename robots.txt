@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://morsely.netlify.app/sitemap.xml
