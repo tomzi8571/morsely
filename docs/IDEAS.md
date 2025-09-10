@@ -11,6 +11,10 @@
   Implement logic to track user accuracy for the current set of letters.
   Only unlock the next progression when mastery (e.g., 90% accuracy) is achieved.
   Ensure practice is always at full target speed.
+- Currently we use this sequence of letters:
+  E T I M A N S O R D L W J P K X C Y G Z Q H V F U I B
+  The Koch method uses this sequence:
+  K, M, U, R, E, S, N, A, P, T, L, W, I, ., J, Z, =, F, O, Y, ,, V, G, 5, /, Q, 9, 2, H, 3, 8, B, ?, 4, 7, C, 1, D, 6, 0, X
 - [ ] Planned
 
 ### Add sentences

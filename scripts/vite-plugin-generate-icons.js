@@ -50,10 +50,10 @@ export default function vitePluginGenerateIcons(options = {}) {
                     .toFile(maskableFilePath);
 
 
-                // Add to manifest
-                icons.push({src: `/icons/${normalFileName}`, sizes: `${size}x${size}`, type: 'image/png'});
+                // Add to manifest (relative paths so it works under subpaths like GitHub Pages)
+                icons.push({src: `icons/${normalFileName}`, sizes: `${size}x${size}`, type: 'image/png'});
                 icons.push({
-                    src: `/icons/${maskableFileName}`, sizes: `${size}x${size}`, type: 'image/png', purpose: 'maskable'
+                    src: `icons/${maskableFileName}`, sizes: `${size}x${size}`, type: 'image/png', purpose: 'maskable'
                 });
 
                 console.log(`Generated ${normalFileName} + ${maskableFileName}`);
@@ -96,8 +96,9 @@ export async function generateManifest(options = {}) {
         await sharp({create: {width: size, height: size, channels: 4, background: {r: 0, g: 0, b: 0, alpha: 0}}})
             .composite([{input: resizedSVGBuffer, top: padding, left: padding}])
             .png().toFile(maskableFilePath);
-        icons.push({src: `/icons/${normalFileName}`, sizes: `${size}x${size}`, type: 'image/png'});
-        icons.push({src: `/icons/${maskableFileName}`, sizes: `${size}x${size}`, type: 'image/png', purpose: 'maskable'});
+        // Relative icon paths for subpath hosting compatibility
+        icons.push({src: `icons/${normalFileName}`, sizes: `${size}x${size}`, type: 'image/png'});
+        icons.push({src: `icons/${maskableFileName}`, sizes: `${size}x${size}`, type: 'image/png', purpose: 'maskable'});
     }
     return {
         name: "Morsely - FUNtastic morse coding",

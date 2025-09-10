@@ -1,0 +1,290 @@
+[
+  {
+    "step": 3,
+    "letters": "ETI",
+    "names": [
+      {"name": "Ettie", "origin": "English", "meaning": "Diminutive of Esther or Henrietta, popular in Victorian Britain."},
+      {"name": "Etti", "origin": "German", "meaning": "Diminutive of Henriette or Elisabet."},
+      {"name": "Tite", "origin": "French/Portuguese", "meaning": "Familiar form sometimes used as a given name or surname."},
+      {"name": "Iti", "origin": "Sanskrit", "meaning": "Means 'thus' or 'end', used in India."},
+      {"name": "Eti", "origin": "Hebrew", "meaning": "Diminutive of Esther, common in Israel."},
+      {"name": "Titi", "origin": "Yoruba", "meaning": "Nickname meaning 'everlasting', used in Nigeria."}
+    ]
+  },
+  {
+    "step": 4,
+    "letters": "ETIM",
+    "names": [
+      {"name": "Emmi", "origin": "Finnish/German", "meaning": "Form related to Emma, popular in Nordic countries."},
+      {"name": "Mete", "origin": "Turkish", "meaning": "Linked to legendary leader Modu Chanyu."},
+      {"name": "Immi", "origin": "Northern European", "meaning": "Diminutive of Imma/Irmgard."},
+      {"name": "Timi", "origin": "West African", "meaning": "Short form of Timilehin, meaning 'God has given me joy'."},
+      {"name": "Mimi", "origin": "International", "meaning": "Pet form of Maria/Miriam, used worldwide."},
+      {"name": "Miet", "origin": "Flemish", "meaning": "Diminutive of Maria, used in Belgium."}
+    ]
+  },
+  {
+    "step": 5,
+    "letters": "ETIMA",
+    "names": [
+      {"name": "Matea", "origin": "Croatian", "meaning": "Feminine form of Matthew."},
+      {"name": "Aime", "origin": "French", "meaning": "Means 'beloved'."},
+      {"name": "Amie", "origin": "English/French", "meaning": "Means 'friend'."},
+      {"name": "Tamia", "origin": "North American", "meaning": "Possibly from Chippewa word for 'chipmunk'."},
+      {"name": "Amita", "origin": "Sanskrit", "meaning": "Means 'infinite' or 'boundless'."},
+      {"name": "Emi", "origin": "Japanese", "meaning": "Means 'blessed' or 'beautiful smile'."}
+    ]
+  },
+  {
+    "step": 6,
+    "letters": "ETIMAN",
+    "names": [
+      {"name": "Anita", "origin": "European", "meaning": "Form of Ana/Anne."},
+      {"name": "Matina", "origin": "Greek", "meaning": "Often a short form of names ending in -matina."},
+      {"name": "Tamina", "origin": "German/Swiss", "meaning": "Recalls the Tamina Gorge in the Alps."},
+      {"name": "Amina", "origin": "Arabic", "meaning": "Means 'trustworthy', mother of Prophet Muhammad."},
+      {"name": "Amine", "origin": "North African", "meaning": "Form of Amin, meaning 'faithful'."},
+      {"name": "Imane", "origin": "Moroccan", "meaning": "Feminine form of Iman, meaning 'faith'."}
+    ]
+  },
+  {
+    "step": 7,
+    "letters": "ETIMANS",
+    "names": [
+      {"name": "Stina", "origin": "Scandinavian", "meaning": "Short form of Christina."},
+      {"name": "Anestis", "origin": "Greek", "meaning": "Means 'resurrection'."},
+      {"name": "Santina", "origin": "Italian", "meaning": "Diminutive of Santa."},
+      {"name": "Iman", "origin": "Arabic", "meaning": "Means 'faith', popularized by Somali-born model Iman."},
+      {"name": "Sami", "origin": "Arabic/Finnish", "meaning": "Means 'elevated', also a Finnish male name."},
+      {"name": "Anis", "origin": "Arabic", "meaning": "Means 'companionable'."}
+    ]
+  },
+  {
+    "step": 8,
+    "letters": "ETIMANSO",
+    "names": [
+      {"name": "Sonia", "origin": "Russian", "meaning": "Diminutive of Sofia, meaning 'wisdom'."},
+      {"name": "Simona", "origin": "Italian/Romanian", "meaning": "Feminine form of Simon."},
+      {"name": "Antonia", "origin": "Roman", "meaning": "Used widely in Europe."},
+      {"name": "Noam", "origin": "Hebrew", "meaning": "Means 'pleasantness'."},
+      {"name": "Tommaso", "origin": "Italian", "meaning": "Form of Thomas."},
+      {"name": "Santino", "origin": "Italian", "meaning": "Masculine diminutive of Santo."}
+    ]
+  },
+  {
+    "step": 9,
+    "letters": "ETIMANSOR",
+    "names": [
+      {"name": "Marios", "origin": "Greek", "meaning": "Variant of Marius/Mario."},
+      {"name": "Ramon", "origin": "Spanish/Catalan", "meaning": "Form of Raymond."},
+      {"name": "Sorina", "origin": "Romanian", "meaning": "Feminine name used in Romania."},
+      {"name": "Mario", "origin": "Italian/Spanish", "meaning": "Form of Marius, also common in Latin America."},
+      {"name": "Roman", "origin": "Latin", "meaning": "Means 'Roman', used globally."},
+      {"name": "Imran", "origin": "Arabic", "meaning": "Name tied to a Qur’anic family."}
+    ]
+  },
+  {
+    "step": 10,
+    "letters": "ETIMANSORD",
+    "names": [
+      {"name": "Dorian", "origin": "Greek", "meaning": "From the Dorian people."},
+      {"name": "Sandra", "origin": "European", "meaning": "Common across Italy, Spain, and Central Europe."},
+      {"name": "Anders", "origin": "Scandinavian", "meaning": "Form of Andrew."},
+      {"name": "Nadia", "origin": "Slavic/Arabic", "meaning": "Means 'hope' or 'tender'."},
+      {"name": "Dario", "origin": "Italian/Spanish", "meaning": "Form of Darius."},
+      {"name": "Randi", "origin": "Norwegian/English", "meaning": "From Old Norse, now unisex."}
+    ]
+  },
+  {
+    "step": 11,
+    "letters": "ETIMANSORDL",
+    "names": [
+      {"name": "Roland", "origin": "Frankish", "meaning": "Means 'famous land'."},
+      {"name": "Sandro", "origin": "Italian", "meaning": "Short form of Alessandro."},
+      {"name": "Loren", "origin": "European", "meaning": "Modern form of Laurentius/Lorenzo."},
+      {"name": "Lina", "origin": "Arabic/European", "meaning": "Means 'tender' in Arabic, also a diminutive in Europe."},
+      {"name": "Liam", "origin": "Irish", "meaning": "Short form of William."},
+      {"name": "Ronald", "origin": "Old Norse", "meaning": "From Rögnvaldr, spread worldwide."}
+    ]
+  },
+  {
+    "step": 12,
+    "letters": "ETIMANSORDLW",
+    "names": [
+      {"name": "Wendel", "origin": "Germanic", "meaning": "Related to the Vandals."},
+      {"name": "Elwin", "origin": "Old English", "meaning": "Means 'elf friend'."},
+      {"name": "Darwin", "origin": "English", "meaning": "Surname turned given name."},
+      {"name": "Rowan", "origin": "Gaelic", "meaning": "Means 'rowan tree' or 'red-haired'."},
+      {"name": "Edwin", "origin": "Old English", "meaning": "Means 'wealth friend'."},
+      {"name": "Wanda", "origin": "Slavic", "meaning": "From the Slavic people, a diminutive of Wanda, meaning 'beautiful woman'."}
+    ]
+  },
+  {
+    "step": 13,
+    "letters": "ETIMANSORDLWJ",
+    "names": [
+      {"name": "Jan", "origin": "Central/Northern European", "meaning": "Form of John."},
+      {"name": "Jordi", "origin": "Catalan", "meaning": "Form of George, celebrated on La Diada de Sant Jordi."},
+      {"name": "Jasmin", "origin": "Balkan/European", "meaning": "Male name in the Balkans, unisex elsewhere."},
+      {"name": "Rajan", "origin": "Sanskrit", "meaning": "Means 'king'."},
+      {"name": "Anja", "origin": "Slavic/Nordic", "meaning": "Form of Anna."},
+      {"name": "Jamil", "origin": "Arabic", "meaning": "Means 'beautiful'."}
+    ]
+  },
+  {
+    "step": 14,
+    "letters": "ETIMANSORDLWJP",
+    "names": [
+      {"name": "Paolo", "origin": "Italian", "meaning": "Form of Paul."},
+      {"name": "Petra", "origin": "Central European", "meaning": "Feminine form of Peter."},
+      {"name": "Pilar", "origin": "Spanish", "meaning": "Honors Our Lady of the Pillar."},
+      {"name": "Parisa", "origin": "Persian", "meaning": "Means 'like a fairy'."},
+      {"name": "Piran", "origin": "Cornish/Iranian", "meaning": "Linked to Saint Piran and also used in Iran."},
+      {"name": "Priam", "origin": "Greek Mythology", "meaning": "Legendary king of Troy."}
+    ]
+  },
+  {
+    "step": 15,
+    "letters": "ETIMANSORDLWJPK",
+    "names": [
+      {"name": "Maks", "origin": "Polish", "meaning": "Short form of Maksymilian."},
+      {"name": "Rik", "origin": "Dutch/Belgian", "meaning": "Short form of Hendrik/Frederik."},
+      {"name": "Kamil", "origin": "Polish/Czech", "meaning": "Form of Camillus."},
+      {"name": "Saki", "origin": "Japanese", "meaning": "Given name with meanings set by kanji."},
+      {"name": "Rika", "origin": "Japanese/Scandinavian", "meaning": "Name with varied meanings by culture."},
+      {"name": "Mika", "origin": "Finnish/Japanese", "meaning": "Short form of Mikael or Japanese given name."}
+    ]
+  },
+  {
+    "step": 16,
+    "letters": "ETIMANSORDLWJPKX",
+    "names": [
+      {"name": "Max", "origin": "European", "meaning": "Short for Maximilian/Maximus."},
+      {"name": "Xenia", "origin": "Greek/Eastern European", "meaning": "Means 'hospitality'."},
+      {"name": "Roxana", "origin": "Persian/European", "meaning": "Means 'bright/dawn', wife of Alexander the Great."},
+      {"name": "Alex", "origin": "Global", "meaning": "Short form of Alexander/Alexandra."},
+      {"name": "Saxon", "origin": "English", "meaning": "Surname-turned-given name referencing the Saxon people."},
+      {"name": "Rex", "origin": "Latin", "meaning": "Means 'king'."}
+    ]
+  },
+  {
+    "step": 17,
+    "letters": "ETIMANSORDLWJPKXC",
+    "names": [
+      {"name": "Cora", "origin": "Greek/Latin", "meaning": "Means 'maiden'."},
+      {"name": "Carlo", "origin": "Italian", "meaning": "Form of Charles."},
+      {"name": "Ricardo", "origin": "Iberian", "meaning": "Form of Richard."},
+      {"name": "Monica", "origin": "Global", "meaning": "Popularized by Saint Monica."},
+      {"name": "Aric", "origin": "North American", "meaning": "Modern variant of Eric."},
+      {"name": "Carina", "origin": "Latin", "meaning": "Means 'dear', also a constellation."}
+    ]
+  },
+  {
+    "step": 18,
+    "letters": "ETIMANSORDLWJPKXCY",
+    "names": [
+      {"name": "Cyril", "origin": "Greek/European", "meaning": "From Kyrillos, meaning 'lordly'."},
+      {"name": "Mary", "origin": "Biblical/European", "meaning": "Influenced countless European forms."},
+      {"name": "Yanis", "origin": "Greek/French", "meaning": "Form of Ioannis/Yannis."},
+      {"name": "Yasin", "origin": "Arabic", "meaning": "From Surah Ya-Sin in the Quran."},
+      {"name": "Maya", "origin": "Multicultural", "meaning": "Has Sanskrit, Hebrew, and Mesoamerican roots."},
+      {"name": "Riya", "origin": "Indian", "meaning": "Means 'singer' or 'graceful'."}
+    ]
+  },
+  {
+    "step": 19,
+    "letters": "ETIMANSORDLWJPKXCYG",
+    "names": [
+      {"name": "Goran", "origin": "South Slavic", "meaning": "Means 'mountain man'."},
+      {"name": "Gregor", "origin": "Central European", "meaning": "Form of Gregory."},
+      {"name": "Angelo", "origin": "Italian", "meaning": "Means 'angel'."},
+      {"name": "Sergio", "origin": "Spanish/Italian", "meaning": "Form of Sergius."},
+      {"name": "Margo", "origin": "French/Global", "meaning": "Form of Margaret."},
+      {"name": "Inga", "origin": "Scandinavian", "meaning": "Linked to Norse god Ing/Yngvi."}
+    ]
+  },
+  {
+    "step": 20,
+    "letters": "ETIMANSORDLWJPKXCYGZ",
+    "names": [
+      {"name": "Gonzalo", "origin": "Spanish", "meaning": "From Gundisalvus."},
+      {"name": "Zsolt", "origin": "Hungarian", "meaning": "Classic masculine name from medieval nobility."},
+      {"name": "Lazaro", "origin": "Spanish/Italian", "meaning": "Form of Lazarus."},
+      {"name": "Zina", "origin": "Slavic/Arabic", "meaning": "Means 'ornament'."},
+      {"name": "Zora", "origin": "Slavic", "meaning": "Means 'dawn'."},
+      {"name": "Aziza", "origin": "Arabic", "meaning": "Means 'precious/powerful'."}
+    ]
+  },
+  {
+    "step": 21,
+    "letters": "ETIMANSORDLWJPKXCYGZQ",
+    "names": [
+      {"name": "Qendrim", "origin": "Albanian", "meaning": "Means 'stance/attitude'."},
+      {"name": "Qemal", "origin": "Albanian", "meaning": "Form of Kemal."},
+      {"name": "Qamil", "origin": "Albanian", "meaning": "Masculine name from Ottoman-era records."},
+      {"name": "Qais", "origin": "Arabic", "meaning": "Famed in the Layla and Majnun legend."},
+      {"name": "Qamar", "origin": "Arabic", "meaning": "Means 'moon'."},
+      {"name": "Qazi", "origin": "Arabic/South Asian", "meaning": "Title for 'judge', used as a name."}
+    ]
+  },
+  {
+    "step": 22,
+    "letters": "ETIMANSORDLWJPKXCYGZQH",
+    "names": [
+      {"name": "Hansi", "origin": "German", "meaning": "Diminutive of Hans, common in Austria and Germany."},
+      {"name": "Misha", "origin": "Russian", "meaning": "Diminutive of Mikhail, used across Eastern Europe."},
+      {"name": "Rohan", "origin": "Irish", "meaning": "Irish name meaning 'red-haired' or 'from the red land'."},
+      {"name": "Hani", "origin": "Arabic", "meaning": "Means 'happy' or 'content'."},
+      {"name": "Haris", "origin": "Arabic/Bosnian", "meaning": "Means 'guardian'."},
+      {"name": "Mahir", "origin": "Arabic/Turkish", "meaning": "Means 'skilled' or 'expert'."}
+    ]
+  },
+  {
+    "step": 23,
+    "letters": "ETIMANSORDLWJPKXCYGZQHV",
+    "names": [
+      {"name": "Ivar", "origin": "Norse", "meaning": "Borne by Viking leaders, still common in Scandinavia."},
+      {"name": "Silvia", "origin": "Latin/European", "meaning": "Means 'forest', popular in Italy, Spain, and Romania."},
+      {"name": "Vasco", "origin": "Portuguese/Spanish", "meaning": "Evokes explorer Vasco da Gama."},
+      {"name": "Ravi", "origin": "Sanskrit", "meaning": "Means 'sun', widely used in India."},
+      {"name": "Ivan", "origin": "Slavic", "meaning": "Form of John, used globally."},
+      {"name": "Aviv", "origin": "Hebrew", "meaning": "Means 'spring', linked to Tel Aviv."}
+    ]
+  },
+  {
+    "step": 24,
+    "letters": "ETIMANSORDLWJPKXCYGZQHVF",
+    "names": [
+      {"name": "Rafal", "origin": "Polish", "meaning": "Form of Raphael, common in Poland."},
+      {"name": "Stefan", "origin": "Pan-European", "meaning": "Royal name from Greek Stephanos."},
+      {"name": "Fiora", "origin": "Italian", "meaning": "Linked to 'fiore' meaning 'flower'."},
+      {"name": "Rafi", "origin": "Arabic", "meaning": "Means 'exalted' or 'lofty'."},
+      {"name": "Safia", "origin": "Arabic", "meaning": "Means 'pure', variant of Safiya."},
+      {"name": "Fiona", "origin": "Scottish", "meaning": "From Gaelic 'fionn' meaning 'fair'."}
+    ]
+  },
+  {
+    "step": 25,
+    "letters": "ETIMANSORDLWJPKXCYGZQHVFU",
+    "names": [
+      {"name": "Luca", "origin": "Italian", "meaning": "Form of Lucas, popular in Europe."},
+      {"name": "Iulian", "origin": "Romanian", "meaning": "Form of Julian."},
+      {"name": "Faust", "origin": "German", "meaning": "From Latin Faustus meaning 'fortunate', known from Goethe's work."},
+      {"name": "Mauro", "origin": "Italian/Spanish", "meaning": "From Latin 'Maurus' meaning 'a Moor'."},
+      {"name": "Rui", "origin": "Portuguese", "meaning": "Also used in Lusophone Africa and Asia."},
+      {"name": "Saurav", "origin": "Indian", "meaning": "Means 'fragrance', common in South Asia."}
+    ]
+  },
+  {
+    "step": 27,
+    "letters": "ETIMANSORDLWJPKXCYGZQHVFUIB",
+    "names": [
+      {"name": "Bianca", "origin": "Italian", "meaning": "Means 'white', appears in Shakespeare's works."},
+      {"name": "Blaise", "origin": "French", "meaning": "Form of Blasius, associated with Saint Blaise."},
+      {"name": "Rubin", "origin": "European", "meaning": "From 'ruby', used in Central/Eastern Europe."},
+      {"name": "Robin", "origin": "English", "meaning": "Diminutive of Robert, now unisex worldwide."},
+      {"name": "Boris", "origin": "Slavic", "meaning": "Means 'battle' or 'struggle', used globally."},
+      {"name": "Basil", "origin": "Greek", "meaning": "From Basileios meaning 'kingly', linked to Saint Basil the Great."}
+    ]
+  }
+]

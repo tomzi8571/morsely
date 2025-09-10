@@ -2,9 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/morsely_icon.svg" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/icons/morsely_icon_16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/icons/morsely_icon_32x32.png" />
+    <link rel="icon" type="image/svg+xml" href="morsely_icon.svg" />
+    <link rel="icon" type="image/png" sizes="16x16" href="icons/morsely_icon_16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/morsely_icon_32x32.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Morsely - have fun learning Morse Code</title>
     <meta name="description" content="Learn Morse code with interactive exercises and a mobile-friendly UI. Practice, listen, and improve your Morse skills." />
@@ -17,15 +17,46 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Morsely - FUNtastic morse coding" />
     <meta name="twitter:description" content="Learn Morse code with interactive exercises and a mobile-friendly UI." />
-    <link rel="manifest" href="/manifest.json" />
+    <link rel="manifest" href="manifest.json" />
     <meta name="theme-color" content="#0ea5e9" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "Morsely - FUNtastic morse coding",
-        "url": "https://morsely.netlify.appp/",
+        "url": "https://morsely.netlify.app/",
         "inLanguage": "en"
+      }
+    </script>
+    <script type="module">
+      // Adjust canonical and OG url dynamically for Netlify vs GitHub Pages
+      // The import.meta.env.BASE_URL comes from vite.config.js' where it is injected.
+      const base = (import.meta && import.meta.env && import.meta.env.BASE_URL) || '/';
+      const canonicalUrl = new URL(base, window.location.origin).href;
+      // canonical
+      let link = document.querySelector('link[rel="canonical"]');
+      if (!link) {
+        link = document.createElement('link');
+        link.setAttribute('rel', 'canonical');
+        document.head.appendChild(link);
+      }
+      link.setAttribute('href', canonicalUrl);
+      // og:url
+      let og = document.querySelector('meta[property="og:url"]');
+      if (!og) {
+        og = document.createElement('meta');
+        og.setAttribute('property', 'og:url');
+        document.head.appendChild(og);
+      }
+      og.setAttribute('content', canonicalUrl);
+      // JSON-LD url
+      const ld = document.querySelector('script[type="application/ld+json"]');
+      if (ld) {
+        try {
+          const data = JSON.parse(ld.textContent || '{}');
+          data.url = canonicalUrl;
+          ld.textContent = JSON.stringify(data);
+        } catch {}
       }
     </script>
   </head>
