@@ -29,3 +29,5 @@ dist-ssr
 # Environment variables file
 .env.version
 .env
+
+.netlify-deploy.json

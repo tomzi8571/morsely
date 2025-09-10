@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
+## [25.9.10]
+- added deployment to github pages
+- added a new names.json, to use in the future for morsecode with sentences.
+- added new AI prompts
+
 ## [25.9.9]
 
 - added a progress bar for exersices. Now you can also see visually, using dots in the progress bar, how many exersices 
