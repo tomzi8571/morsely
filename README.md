@@ -158,5 +158,7 @@ I hope I figured it out, today, as you read this right now 😉
   - Replace with your repo name if different.
 
 
-# Release Notes
+# Next
 [Release Notes](docs/RELEASE_NOTES.md)
+[Ideas](docs/IDEAS.md)
+
